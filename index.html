@@ -179,6 +179,14 @@ footer img{height:30px;width:auto;margin-bottom:10px}
 footer .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
 footer a{color:var(--navy);font-weight:700}
 
+/* Tools */
+.tools{border-top:1px solid var(--line)}
+.logos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.logos div{background:#fff;border:1px solid var(--line);border-radius:16px;height:88px;display:flex;align-items:center;justify-content:center;padding:12px 16px}
+.logos img{max-height:58px;max-width:100%;width:auto;height:auto}
+.logos div:last-child{grid-column:span 2}
+.copy{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;font-size:13px}
+
 /* Sticky bottom CTA (phones/tablets) */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;box-shadow:0 -8px 24px rgba(21,14,61,.08)}
 .dock .btn{flex:1;min-height:50px;font-size:15px;padding:0 12px}
@@ -203,6 +211,8 @@ footer a{color:var(--navy);font-weight:700}
   .ai{display:grid;grid-template-columns:repeat(3,1fr)}
   .nums{grid-template-columns:repeat(5,1fr)}
   .nums div:last-child{grid-column:auto}
+  .logos{grid-template-columns:repeat(5,1fr)}
+  .logos div:last-child{grid-column:auto}
   .final h2{font-size:44px}
 }
 @media (min-width:1024px){
@@ -437,6 +447,21 @@ footer a{color:var(--navy);font-weight:700}
     <a class="btn btn-yellow" href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a>
   </div>
 </section>
+<section id="tools" class="sec tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tools yang dipakai</span>
+      <h2>Belajar dengan tools yang dipakai di dunia nyata</h2>
+    </div>
+    <div class="logos">
+      <div><img src="logos/scratchjr.png" alt="ScratchJr" loading="lazy"></div>
+      <div><img src="logos/pictoblox.png" alt="PictoBlox" loading="lazy"></div>
+      <div><img src="logos/python.png" alt="Python" loading="lazy"></div>
+      <div><img src="logos/javascript.png" alt="JavaScript" loading="lazy"></div>
+      <div><img src="logos/git.png" alt="Git" loading="lazy"></div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -444,6 +469,7 @@ footer a{color:var(--navy);font-weight:700}
     <img src="logo.png" alt="Coding Xplor">
     <p>K–12 Coding &amp; Digital Creation Program · A sub-brand of Robotic Explorer</p>
     <div class="links"><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a><a href="https://xploracademy.id">xploracademy.id</a></div>
+    <p class="copy">Hak Cipta © 2026 Coding Xplor</p>
   </div>
 </footer>
 
