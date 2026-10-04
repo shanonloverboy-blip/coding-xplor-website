@@ -30,7 +30,7 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--head);color:var(--navy);margin:0;line-height:1.1}
 p{margin:0}
 section{scroll-margin-top:64px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+.wrap{max-width:1680px;margin:0 auto;padding:0 var(--gutter)}
 .eyebrow{font:800 12px/1 var(--head);letter-spacing:1.4px;text-transform:uppercase;color:var(--gold)}
 .sec{padding:56px 0}
 .sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;max-width:680px}
@@ -229,8 +229,9 @@ footer a{color:var(--navy);font-weight:700}
   .final h2{font-size:44px}
 }
 @media (min-width:1024px){
+  :root{--gutter:clamp(40px,5vw,96px)}
   body{padding-bottom:0}
-  .dock,.menu-btn,.drawer,.login-sm{display:none !important}
+  .dock,.menu-btn,.drawer,.login-sm,.top-actions{display:none !important}
   .nav{display:flex;align-items:center;gap:24px;font:800 15px/1 var(--head)}
   .nav a{text-decoration:none;color:var(--navy)}
   .nav .btn{min-height:44px;padding:0 20px;color:#fff}
