@@ -50,6 +50,8 @@ section{scroll-margin-top:64px}
 .menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;position:relative}
 .menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
 .nav{display:none}
+.top-actions{display:flex;align-items:center;gap:8px}
+.login-sm{min-height:44px;padding:0 16px;font-size:14px;border-width:2px}
 .drawer{position:fixed;inset:60px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--gutter) 20px;display:none;flex-direction:column;z-index:29;box-shadow:0 16px 30px rgba(21,14,61,.12)}
 .drawer.open{display:flex}
 .drawer a{font:800 18px/1 var(--head);color:var(--navy);text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -218,10 +220,11 @@ footer a{color:var(--navy);font-weight:700}
 }
 @media (min-width:1024px){
   body{padding-bottom:0}
-  .dock,.menu-btn,.drawer{display:none !important}
+  .dock,.menu-btn,.drawer,.login-sm{display:none !important}
   .nav{display:flex;align-items:center;gap:24px;font:800 15px/1 var(--head)}
   .nav a{text-decoration:none;color:var(--navy)}
   .nav .btn{min-height:44px;padding:0 20px;color:#fff}
+  .nav .btn-ghost{color:var(--navy)}
   .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px 48px;align-items:center}
   .stages{grid-template-columns:1fr 1fr;margin-top:0}
   .stage{padding:22px;min-height:140px}
@@ -240,13 +243,18 @@ footer a{color:var(--navy);font-weight:700}
     <a href="#top" aria-label="Coding Xplor, kembali ke atas"><img src="logo.png" alt="Coding Xplor"></a>
     <nav class="nav" aria-label="Navigasi utama">
       <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
+      <a class="btn btn-ghost" href="#login">Log In</a>
       <a class="btn btn-navy" href="https://wa.me/6282298984848">Coba Free Trial</a>
     </nav>
-    <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    <div class="top-actions">
+      <a class="btn btn-ghost login-sm" href="#login">Log In</a>
+      <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    </div>
   </div>
 </header>
 <div class="drawer" id="drawer">
   <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
+  <a href="#login">Log In</a>
   <a class="btn btn-yellow" href="https://wa.me/6282298984848">Coba Free Trial Class</a>
 </div>
 
