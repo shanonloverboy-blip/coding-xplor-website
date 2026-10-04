@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#150E3D">
 <title>Coding Xplor — Program Coding Kelas 1–12</title>
 <meta name="description" content="Coding Xplor: program coding Kelas 1–12, online dan di HQ Coding Xplor. Anak belajar coding dengan membuat 22 project nyata setiap tahun. A sub-brand of Robotic Explorer.">
 <meta property="og:title" content="Coding Xplor — From First Code to Real-World Creation">
@@ -10,314 +11,457 @@
 <meta property="og:image" content="logo.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-body{margin:0}
-a{color:#150E3D}a:hover{color:#B76F00}
-details summary{cursor:pointer;list-style:none}
-details summary::-webkit-details-marker{display:none}
+:root{
+  --navy:#150E3D; --yellow:#F4B604; --blue:#2AA4FF; --pink:#DA2585;
+  --gold:#8A5300; --gold-2:#B76F00; --blue-ink:#0B5C9E; --pink-ink:#A3175F;
+  --cream:#FEF6DC; --sky:#E3F1FF; --rose:#FBE3EF; --mist:#F5F5FB;
+  --ink:#1C1838; --muted:#4A4668; --line:#E4E3F0;
+  --r:20px; --gutter:20px;
+  --head:'Nunito',system-ui,sans-serif; --body:'Figtree','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 var(--body);padding-bottom:84px}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);color:var(--navy);margin:0;line-height:1.1}
+p{margin:0}
+section{scroll-margin-top:64px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font:800 12px/1 var(--head);letter-spacing:1.4px;text-transform:uppercase;color:var(--gold)}
+.sec{padding:56px 0}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;max-width:680px}
+.sec-head h2{font-size:28px;font-weight:900}
+.sec-head p{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:999px;font:800 16px/1 var(--head);text-decoration:none;border:2px solid transparent}
+.btn-yellow{background:var(--yellow);color:var(--navy)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{border-color:var(--navy);color:var(--navy)}
+.wa-ico{width:20px;height:20px;flex:none}
+
+/* Header */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.top img{height:32px;width:auto}
+.menu-btn{width:44px;height:44px;border:0;background:var(--mist);border-radius:12px;display:grid;place-items:center;cursor:pointer}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;position:relative}
+.menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
+.nav{display:none}
+.drawer{position:fixed;inset:60px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--gutter) 20px;display:none;flex-direction:column;z-index:29;box-shadow:0 16px 30px rgba(21,14,61,.12)}
+.drawer.open{display:flex}
+.drawer a{font:800 18px/1 var(--head);color:var(--navy);text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line)}
+.drawer .btn{margin-top:16px;border-bottom:0}
+
+/* Hero */
+.hero{padding:28px 0 8px}
+.pill{display:inline-block;background:var(--yellow);color:var(--navy);font:800 11px/1.3 var(--head);letter-spacing:1.2px;padding:7px 12px;border-radius:999px}
+.hero h1{font-size:36px;font-weight:900;text-transform:uppercase;letter-spacing:-.3px;margin:16px 0 14px;line-height:1.02}
+.hero h1 em{font-style:normal;color:var(--gold-2)}
+.hero .lead{font:700 18px/1.45 var(--head);color:var(--navy)}
+.hero .sub{color:var(--muted);margin-top:10px}
+.hero .ctas{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.stages{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px;margin-top:28px}
+.stage{border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:4px;text-decoration:none}
+.stage small{font:800 11px/1 var(--head);letter-spacing:1px}
+.stage b{font:900 20px/1.1 var(--head);color:var(--navy)}
+.stage span{font-size:13px;color:var(--muted)}
+.s1{background:var(--cream)}.s1 small{color:var(--gold)}
+.s2{background:var(--sky)}.s2 small{color:var(--blue-ink)}
+.s3{background:var(--rose)}.s3 small{color:var(--pink-ink)}
+.s4{background:var(--navy)}.s4 small{color:var(--yellow)}.s4 b{color:#fff}.s4 span{color:#CFCBEA}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.stat{border:1px solid var(--line);border-radius:18px;padding:16px}
+.stat b{display:block;font:900 30px/1 var(--head);color:var(--navy)}
+.stat strong{display:block;font:800 14px/1.25 var(--head);color:var(--navy);margin-top:6px}
+.stat span{display:block;font-size:13px;color:var(--muted);margin-top:2px;line-height:1.35}
+
+/* Swipe rows */
+.swipe{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter)*-1);padding:4px var(--gutter) 14px;scroll-padding:0 var(--gutter);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.swipe::-webkit-scrollbar{display:none}
+.swipe>*{scroll-snap-align:start;flex:0 0 84%}
+.hint{font-size:13px;color:var(--muted);margin-top:-4px}
+
+/* Program cards */
+.prog{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+.prog-top{padding:18px}
+.prog-top small{font:800 11px/1 var(--head);letter-spacing:1px}
+.prog-top h3{font-size:24px;font-weight:900;margin-top:6px}
+.prog-top div{font:700 13px/1.3 var(--head);margin-top:4px}
+.prog-body{padding:18px;display:flex;flex-direction:column;gap:12px;color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:800 12px/1 var(--head);padding:8px 10px;border-radius:999px;color:var(--navy)}
+.p1 .prog-top{background:var(--yellow)}.p1 .tags span{background:var(--cream)}
+.p2 .prog-top{background:var(--blue)}.p2 .prog-top *{color:#fff}.p2 .tags span{background:var(--sky)}
+.p3 .prog-top{background:var(--pink)}.p3 .prog-top *{color:#fff}.p3 .tags span{background:var(--rose)}
+.p4 .prog-top{background:var(--navy)}.p4 .prog-top *{color:#fff}.p4 .prog-top small{color:var(--yellow)}.p4 .tags span{background:var(--mist)}
+
+/* Steps */
+.bg-mist{background:var(--mist)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{background:#fff;border-radius:var(--r);padding:18px;display:grid;grid-template-columns:52px 1fr;gap:4px 14px;align-items:start}
+.step .n{grid-row:span 3;width:52px;height:52px;border-radius:16px;background:var(--yellow);display:grid;place-items:center;font:900 22px/1 var(--head);color:var(--navy)}
+.step small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--gold)}
+.step h3{font-size:22px;font-weight:900}
+.step p{color:var(--muted);font-size:15px}
+.step p b{color:var(--navy)}
+
+/* Journey */
+.dark{background:var(--navy);color:#fff}
+.dark h2{color:#fff}.dark .sec-head p{color:#CFCBEA}.dark .eyebrow{color:var(--yellow)}
+.timeline{list-style:none;margin:0;padding:0 0 0 22px;position:relative}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:24px;width:3px;border-radius:3px;background:linear-gradient(var(--yellow),var(--blue),var(--pink),#fff)}
+.timeline li{position:relative;padding:0 0 18px 14px}
+.timeline li::before{content:"";position:absolute;left:-21px;top:4px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--navy);box-shadow:0 0 0 2px #fff}
+.timeline small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--yellow)}
+.timeline div{font:800 17px/1.3 var(--head);margin-top:4px}
+.goal{font:800 20px/1.35 var(--head);margin-top:8px}
+.goal em{font-style:normal;color:var(--yellow)}
+
+/* Card grids */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.card h3{font-size:16px;font-weight:900;margin-bottom:4px}
+.card p{font-size:14px;color:var(--muted);line-height:1.4}
+.ai{display:flex;flex-direction:column;gap:10px}
+.ai .card{display:flex;flex-direction:column;gap:4px;border-left:6px solid var(--blue)}
+.ai .card:nth-child(2){border-left-color:var(--pink)}.ai .card:nth-child(3){border-left-color:var(--navy)}
+.ai small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--blue-ink)}
+.ai .card:nth-child(2) small{color:var(--pink-ink)}.ai .card:nth-child(3) small{color:var(--navy)}
+
+/* Pricing */
+.price{border:1px solid var(--line);border-radius:var(--r);padding:18px;border-top:6px solid var(--yellow);display:flex;flex-direction:column;gap:4px;background:#fff}
+.price small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--gold)}
+.price h3{font-size:22px;font-weight:900}
+.price .from{font-size:14px;color:var(--muted);margin-top:8px}
+.price .amt{font:900 30px/1 var(--head);color:var(--navy)}
+.price .amt span{font-size:14px;font-weight:700;color:var(--muted)}
+.price.c2{border-top-color:var(--blue)}.price.c2 small{color:var(--blue-ink)}
+.price.c3{border-top-color:var(--pink)}.price.c3 small{color:var(--pink-ink)}
+.price.c4{border-top-color:var(--navy)}.price.c4 small{color:var(--navy)}
+.extras{list-style:none;margin:14px 0 0;padding:0;background:var(--mist);border-radius:18px}
+.extras li{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);font-size:15px}
+.extras li:last-child{border-bottom:0}
+.extras b{font-family:var(--head);color:var(--navy)}
+.extras span{text-align:right;color:var(--muted)}
+
+/* School */
+.cream{background:var(--cream)}
+.cream .card{border:0}
+.school-cta{margin-top:20px;width:100%;max-width:360px}
+
+/* Trust */
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nums div{background:var(--mist);border-radius:18px;padding:16px}
+.nums b{display:block;font:900 26px/1 var(--head);color:var(--navy)}
+.nums span{font-size:13px;color:var(--muted)}
+.nums div:last-child{grid-column:span 2}
+.note{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* FAQ */
+.faq details{background:#fff;border-radius:16px;margin-bottom:10px}
+.faq summary{list-style:none;cursor:pointer;padding:18px 48px 18px 18px;font:800 16px/1.35 var(--head);color:var(--navy);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font:900 24px/1 var(--head);color:var(--gold-2)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 18px 18px;color:var(--muted);font-size:15px}
+
+/* CTA + footer */
+.final{text-align:center}
+.final h2{font-size:30px;font-weight:900;color:#fff;text-transform:uppercase}
+.final h2 em{font-style:normal;color:var(--yellow)}
+.final p{color:#CFCBEA;margin:12px 0 22px}
+footer{padding:32px 0 24px;font-size:14px;color:var(--muted)}
+footer img{height:30px;width:auto;margin-bottom:10px}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
+footer a{color:var(--navy);font-weight:700}
+
+/* Sticky bottom CTA (phones/tablets) */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;box-shadow:0 -8px 24px rgba(21,14,61,.08)}
+.dock .btn{flex:1;min-height:50px;font-size:15px;padding:0 12px}
+.dock .btn-ghost{flex:0 0 auto;padding:0 20px}
+
+@media (min-width:720px){
+  :root{--gutter:32px}
+  .sec{padding:80px 0}
+  .sec-head h2{font-size:38px}
+  .hero{padding:56px 0 16px}
+  .hero h1{font-size:54px}
+  .hero .ctas{flex-direction:row}
+  .stages{grid-template-columns:repeat(4,1fr)}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .swipe{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible;margin:0;padding:0}
+  .swipe>*{flex:none}
+  .hint{display:none}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr)}
+  .step{grid-template-columns:1fr}
+  .step .n{grid-row:auto;margin-bottom:8px}
+  .grid2{grid-template-columns:repeat(3,1fr)}
+  .ai{display:grid;grid-template-columns:repeat(3,1fr)}
+  .nums{grid-template-columns:repeat(5,1fr)}
+  .nums div:last-child{grid-column:auto}
+  .final h2{font-size:44px}
+}
+@media (min-width:1024px){
+  body{padding-bottom:0}
+  .dock,.menu-btn,.drawer{display:none !important}
+  .nav{display:flex;align-items:center;gap:24px;font:800 15px/1 var(--head)}
+  .nav a{text-decoration:none;color:var(--navy)}
+  .nav .btn{min-height:44px;padding:0 20px;color:#fff}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px 48px;align-items:center}
+  .stages{grid-template-columns:1fr 1fr;margin-top:0}
+  .stage{padding:22px;min-height:140px}
+  .stage b{font-size:24px}
+  .stats{grid-column:1/-1;margin-top:20px}
+  .swipe{grid-template-columns:repeat(4,1fr)}
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
+}
 </style>
-<style>html{scroll-behavior:smooth} section{scroll-margin-top:80px}
-@media (max-width:640px){h1{font-size:40px !important} h2{font-size:30px !important} header nav>div{gap:4px 16px !important; font-size:14px !important}}</style>
 </head>
 <body>
-<div style="font-family: 'Figtree', 'Segoe UI', sans-serif; color: #1C1838; background: #FFFFFF; font-size: 17px; line-height: 1.55">
 
-<header style="position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,0.96); border-bottom: 1px solid #ECEBF5">
-<nav aria-label="Navigasi utama" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<a href="#top" aria-label="Coding Xplor, kembali ke atas" style="display: flex; align-items: center"><img src="logo.png" alt="Coding Xplor" style="height: 40px; width: auto; display: block"></a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px">
-<a href="#program" style="text-decoration: none; padding: 10px 0">Program</a>
-<a href="#cara-belajar" style="text-decoration: none; padding: 10px 0">Cara Belajar</a>
-<a href="#biaya" style="text-decoration: none; padding: 10px 0">Biaya</a>
-<a href="#sekolah" style="text-decoration: none; padding: 10px 0">Untuk Sekolah</a>
-<a href="#faq" style="text-decoration: none; padding: 10px 0">FAQ</a>
-<a href="https://wa.me/6282298984848" style="text-decoration: none; background: #150E3D; color: #FFFFFF; padding: 12px 20px; border-radius: 999px">Coba Free Trial</a>
-</div>
-</nav>
+<header class="top">
+  <div class="wrap">
+    <a href="#top" aria-label="Coding Xplor, kembali ke atas"><img src="logo.png" alt="Coding Xplor"></a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
+      <a class="btn btn-navy" href="https://wa.me/6282298984848">Coba Free Trial</a>
+    </nav>
+    <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+  </div>
 </header>
+<div class="drawer" id="drawer">
+  <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
+  <a class="btn btn-yellow" href="https://wa.me/6282298984848">Coba Free Trial Class</a>
+</div>
 
-<section id="top" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 56px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-<span style="align-self: flex-start; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; padding: 6px 14px; border-radius: 999px">PROGRAM CODING KELAS 1–12 · ONLINE &amp; HQ</span>
-<h1 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 60px; line-height: 1.02; color: #150E3D; text-transform: uppercase; letter-spacing: -0.5px">From first code to <span style="color: #B76F00">real-world creation</span></h1>
-<p style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 21px; line-height: 1.45; color: #150E3D; max-width: 560px">Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi.</p>
-<p style="margin: 0; color: #4A4668; max-width: 560px">Anak tidak hanya belajar teori atau menghafal syntax. Mereka belajar coding dengan cara membuat sesuatu, dari cerita digital dan game sampai website, aplikasi, dan data projects.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
-<a href="https://wa.me/6282298984848" style="text-decoration: none; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; padding: 15px 26px; border-radius: 999px">Coba Free Trial Class</a>
-<a href="#program" style="text-decoration: none; border: 2px solid #150E3D; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; padding: 13px 24px; border-radius: 999px">Lihat Program</a>
-</div>
-</div>
-<div style="flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 14px">
-<div style="background: #FEF6DC; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 150px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #8A5300">KELAS 1–3</span>
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #150E3D">Foundation</span>
-<span style="font-size: 15px; color: #4A4668">ScratchJr · cerita digital pertama</span>
-</div>
-<div style="background: #E3F1FF; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 150px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #0B5C9E">KELAS 4–6</span>
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #150E3D">Builder</span>
-<span style="font-size: 15px; color: #4A4668">PictoBlox · animasi &amp; game</span>
-</div>
-<div style="background: #FBE3EF; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 150px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #A3175F">KELAS 7–9</span>
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #150E3D">Developer</span>
-<span style="font-size: 15px; color: #4A4668">Python · HTML/CSS · website</span>
-</div>
-<div style="background: #150E3D; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 6px; min-height: 150px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #F4B604">KELAS 10–12</span>
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #FFFFFF">Creator</span>
-<span style="font-size: 15px; color: #D9D6F2">Data · web apps · capstone</span>
-</div>
-</div>
-</div>
-<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 64px">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px">
-<div style="border: 1px solid #DFDFEF; border-radius: 18px; padding: 20px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #150E3D">22</div><div style="font-weight: 700; color: #150E3D; margin-top: 6px">Project Per Tahun</div><div style="font-size: 14px; color: #5C5878">20 Mini Project + 2 Final Project</div></div>
-<div style="border: 1px solid #DFDFEF; border-radius: 18px; padding: 20px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #150E3D">60</div><div style="font-weight: 700; color: #150E3D; margin-top: 6px">Menit Per Kelas</div><div style="font-size: 14px; color: #5C5878">1x Seminggu, 32 Pertemuan Per Tahun</div></div>
-<div style="border: 1px solid #DFDFEF; border-radius: 18px; padding: 20px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #150E3D">1:10</div><div style="font-weight: 700; color: #150E3D; margin-top: 6px">Pengajar Dan Murid</div><div style="font-size: 14px; color: #5C5878">Maksimal 10 Anak Per Pengajar</div></div>
-<div style="border: 1px solid #DFDFEF; border-radius: 18px; padding: 20px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #150E3D">4</div><div style="font-weight: 700; color: #150E3D; margin-top: 6px">Tahap Belajar</div><div style="font-size: 14px; color: #5C5878">Bertahap Dari Kelas 1 Sampai 12</div></div>
-</div>
-</div>
+<main>
+<section id="top" class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill">KELAS 1–12 · ONLINE &amp; HQ</span>
+      <h1>From first code to <em>real-world creation</em></h1>
+      <p class="lead">Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi.</p>
+      <p class="sub">Anak tidak hanya belajar teori atau menghafal syntax. Mereka belajar coding dengan membuat sesuatu, dari cerita digital dan game sampai website, aplikasi, dan data projects.</p>
+      <div class="ctas">
+        <a class="btn btn-yellow" href="https://wa.me/6282298984848">Coba Free Trial Class</a>
+        <a class="btn btn-ghost" href="#program">Lihat Program</a>
+      </div>
+    </div>
+    <div class="stages">
+      <a class="stage s1" href="#program"><small>KELAS 1–3</small><b>Foundation</b><span>ScratchJr · cerita digital</span></a>
+      <a class="stage s2" href="#program"><small>KELAS 4–6</small><b>Builder</b><span>PictoBlox · animasi &amp; game</span></a>
+      <a class="stage s3" href="#program"><small>KELAS 7–9</small><b>Developer</b><span>Python · HTML/CSS</span></a>
+      <a class="stage s4" href="#program"><small>KELAS 10–12</small><b>Creator</b><span>Data · web apps · capstone</span></a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>22</b><strong>Project Per Tahun</strong><span>20 Mini Project + 2 Final Project</span></div>
+      <div class="stat"><b>60</b><strong>Menit Per Kelas</strong><span>1x Seminggu, 32 Pertemuan Per Tahun</span></div>
+      <div class="stat"><b>1:10</b><strong>Pengajar Dan Murid</strong><span>Maksimal 10 Anak Per Pengajar</span></div>
+      <div class="stat"><b>4</b><strong>Tahap Belajar</strong><span>Bertahap Dari Kelas 1 Sampai 12</span></div>
+    </div>
+  </div>
 </section>
 
-<section id="program" style="background: #F5F5FB">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">APA YANG AKAN ANAK PELAJARI</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Four stages, one pathway</h2>
-<p style="margin: 0; color: #4A4668">Anak naik dari coding berbasis blok ke kode nyata secara bertahap, sesuai usia dan kesiapannya. Setiap tahap menyiapkan anak untuk tahap berikutnya.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px">
-<article style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #DFDFEF; display: flex; flex-direction: column">
-<div style="background: #F4B604; padding: 18px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #150E3D">KELAS 1–3</div><h3 style="margin: 4px 0 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #150E3D">Foundation</h3><div style="font-size: 14px; font-weight: 600; color: #150E3D">Computer &amp; Coding Foundations</div></div>
-<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
-<p style="margin: 0">Mengenal komputer dan membuat animasi serta cerita digital pertama dengan ScratchJr.</p>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; color: #8A5300">CONTOH PROJECT</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="background: #FEF6DC; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Digital Picture Book</span><span style="background: #FEF6DC; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Animated Story</span></div>
-</div>
-</article>
-<article style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #DFDFEF; display: flex; flex-direction: column">
-<div style="background: #2AA4FF; padding: 18px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #150E3D">KELAS 4–6</div><h3 style="margin: 4px 0 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #150E3D">Builder</h3><div style="font-size: 14px; font-weight: 600; color: #150E3D">Creative Coding</div></div>
-<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
-<p style="margin: 0">Membuat animasi, game, dan aplikasi interaktif dengan PictoBlox: logika, variabel, dan problem solving.</p>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; color: #0B5C9E">CONTOH PROJECT</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="background: #E3F1FF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Arcade Game</span><span style="background: #E3F1FF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Quiz Game</span><span style="background: #E3F1FF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Interactive App</span></div>
-</div>
-</article>
-<article style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #DFDFEF; display: flex; flex-direction: column">
-<div style="background: #DA2585; padding: 18px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #FFFFFF">KELAS 7–9</div><h3 style="margin: 4px 0 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #FFFFFF">Developer</h3><div style="font-size: 14px; font-weight: 600; color: #FFFFFF">Real Programming</div></div>
-<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
-<p style="margin: 0">Computational thinking, lalu pindah ke kode nyata: Python mulai Kelas 8, HTML dan CSS untuk website.</p>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; color: #A3175F">CONTOH PROJECT</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="background: #FBE3EF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Python Chatbot</span><span style="background: #FBE3EF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Portfolio Website</span><span style="background: #FBE3EF; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Personal Manager App</span></div>
-</div>
-</article>
-<article style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #DFDFEF; display: flex; flex-direction: column">
-<div style="background: #150E3D; padding: 18px 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #F4B604">KELAS 10–12</div><h3 style="margin: 4px 0 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; color: #FFFFFF">Creator</h3><div style="font-size: 14px; font-weight: 600; color: #D9D6F2">Advanced Coding &amp; Real-World Projects</div></div>
-<div style="padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
-<p style="margin: 0">Python untuk data, JavaScript dan aplikasi web, Git, automation, dan capstone project untuk masalah nyata.</p>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; color: #150E3D">CONTOH PROJECT</div>
-<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="background: #ECEBF5; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">School Data Report</span><span style="background: #ECEBF5; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Interactive Web App</span><span style="background: #ECEBF5; border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 600">Capstone Project</span></div>
-</div>
-</article>
-</div>
-</div>
+<section id="program" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Apa yang akan anak pelajari</span>
+      <h2>Four stages, one pathway</h2>
+      <p>Anak naik dari coding berbasis blok ke kode nyata secara bertahap, sesuai usia dan kesiapannya.</p>
+    </div>
+    <div class="swipe">
+      <article class="prog p1"><div class="prog-top"><small>KELAS 1–3</small><h3>Foundation</h3><div>Computer &amp; Coding Foundations</div></div>
+        <div class="prog-body"><p>Mengenal komputer dan membuat animasi serta cerita digital pertama dengan ScratchJr.</p><div class="tags"><span>Digital Picture Book</span><span>Animated Story</span></div></div></article>
+      <article class="prog p2"><div class="prog-top"><small>KELAS 4–6</small><h3>Builder</h3><div>Creative Coding</div></div>
+        <div class="prog-body"><p>Membuat animasi, game, dan aplikasi interaktif dengan PictoBlox: logika, variabel, dan problem solving.</p><div class="tags"><span>Arcade Game</span><span>Quiz Game</span><span>Interactive App</span></div></div></article>
+      <article class="prog p3"><div class="prog-top"><small>KELAS 7–9</small><h3>Developer</h3><div>Real Programming</div></div>
+        <div class="prog-body"><p>Computational thinking, lalu pindah ke kode nyata: Python mulai Kelas 8, HTML dan CSS untuk website.</p><div class="tags"><span>Python Chatbot</span><span>Portfolio Website</span><span>Personal Manager App</span></div></div></article>
+      <article class="prog p4"><div class="prog-top"><small>KELAS 10–12</small><h3>Creator</h3><div>Advanced Coding &amp; Real-World Projects</div></div>
+        <div class="prog-body"><p>Python untuk data, JavaScript dan aplikasi web, Git, automation, dan capstone project untuk masalah nyata.</p><div class="tags"><span>School Data Report</span><span>Interactive Web App</span><span>Capstone Project</span></div></div></article>
+    </div>
+    <p class="hint">Geser untuk melihat semua tahap →</p>
+  </div>
 </section>
 
-<section id="cara-belajar" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">BAGAIMANA SETIAP KELAS BERLANGSUNG</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Every class = build something</h2>
-<p style="margin: 0; color: #4A4668">Setiap pertemuan 60 menit mengikuti tiga langkah yang sama, jadi anak langsung praktik dan teori dipelajari tepat saat dibutuhkan.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
-<div style="background: #F5F5FB; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="align-self: flex-start; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; padding: 4px 12px; border-radius: 999px">0–10 MENIT</span>
-<h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; color: #150E3D">Show</h3>
-<p style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 700; color: #8A5300">See what you're going to build.</p>
-<p style="margin: 0; color: #4A4668">Pengajar menunjukkan project jadi yang akan dibuat hari itu dan memperkenalkan konsepnya.</p>
-</div>
-<div style="background: #F5F5FB; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="align-self: flex-start; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; padding: 4px 12px; border-radius: 999px">10–50 MENIT</span>
-<h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; color: #150E3D">Make</h3>
-<p style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 700; color: #8A5300">Build while learning the concept.</p>
-<p style="margin: 0; color: #4A4668">Anak membuat project langkah demi langkah. Yang selesai lebih cepat mendapat Bonus Mission.</p>
-</div>
-<div style="background: #F5F5FB; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
-<span style="align-self: flex-start; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1px; padding: 4px 12px; border-radius: 999px">50–60 MENIT</span>
-<h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; color: #150E3D">Share</h3>
-<p style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 700; color: #8A5300">Show your work and reflect.</p>
-<p style="margin: 0; color: #4A4668">Anak menunjukkan hasilnya, menjelaskan apa yang dibuat, dan menyimpannya ke portfolio.</p>
-</div>
-</div>
-</div>
+<section id="cara-belajar" class="sec bg-mist">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Bagaimana setiap kelas berlangsung</span>
+      <h2>Every class = build something</h2>
+      <p>Setiap pertemuan 60 menit mengikuti tiga langkah yang sama, jadi anak langsung praktik dan teori dipelajari tepat saat dibutuhkan.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><small>0–10 MENIT</small><h3>Show</h3><p><b>See what you're going to build.</b> Pengajar menunjukkan project jadi dan memperkenalkan konsepnya.</p></div>
+      <div class="step"><div class="n">2</div><small>10–50 MENIT</small><h3>Make</h3><p><b>Build while learning the concept.</b> Anak membuat project langkah demi langkah. Yang selesai lebih cepat mendapat Bonus Mission.</p></div>
+      <div class="step"><div class="n">3</div><small>50–60 MENIT</small><h3>Share</h3><p><b>Show your work and reflect.</b> Anak menunjukkan hasilnya, menjelaskan apa yang dibuat, dan menyimpannya ke portfolio.</p></div>
+    </div>
+  </div>
 </section>
 
-<section style="background: #150E3D; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 36px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #F4B604">THE STUDENT JOURNEY</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; text-transform: uppercase">One student. One long-term journey.</h2>
-<p style="margin: 0; color: #D9D6F2">Anak tidak perlu memulai dari awal setiap kali naik kelas. Kemampuannya berkembang tahun demi tahun.</p>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 14px">
-<li style="border-top: 3px solid #F4B604; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #F4B604; font-size: 13px; letter-spacing: 1px">KELAS 1</div><div style="font-weight: 700; margin-top: 4px">Mengenal komputer</div></li>
-<li style="border-top: 3px solid #F4B604; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #F4B604; font-size: 13px; letter-spacing: 1px">KELAS 3</div><div style="font-weight: 700; margin-top: 4px">Membuat digital story</div></li>
-<li style="border-top: 3px solid #2AA4FF; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #7CC6FF; font-size: 13px; letter-spacing: 1px">KELAS 5</div><div style="font-weight: 700; margin-top: 4px">Membuat game</div></li>
-<li style="border-top: 3px solid #DA2585; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #F48BC0; font-size: 13px; letter-spacing: 1px">KELAS 7</div><div style="font-weight: 700; margin-top: 4px">Algoritma &amp; computational thinking</div></li>
-<li style="border-top: 3px solid #DA2585; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #F48BC0; font-size: 13px; letter-spacing: 1px">KELAS 8</div><div style="font-weight: 700; margin-top: 4px">Mulai Python</div></li>
-<li style="border-top: 3px solid #DA2585; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #F48BC0; font-size: 13px; letter-spacing: 1px">KELAS 9</div><div style="font-weight: 700; margin-top: 4px">Membuat website</div></li>
-<li style="border-top: 3px solid #FFFFFF; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #FFFFFF; font-size: 13px; letter-spacing: 1px">KELAS 10</div><div style="font-weight: 700; margin-top: 4px">Mengolah data</div></li>
-<li style="border-top: 3px solid #FFFFFF; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #FFFFFF; font-size: 13px; letter-spacing: 1px">KELAS 11</div><div style="font-weight: 700; margin-top: 4px">Membuat web application</div></li>
-<li style="border-top: 3px solid #FFFFFF; padding-top: 14px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; color: #FFFFFF; font-size: 13px; letter-spacing: 1px">KELAS 12</div><div style="font-weight: 700; margin-top: 4px">Capstone project</div></li>
-</ol>
-<p style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px">Tujuannya: anak tidak hanya menjadi <span style="color: #F4B604">pengguna teknologi</span>, tetapi belajar menjadi <span style="color: #F4B604">creator</span>.</p>
-</div>
+<section class="sec dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The student journey</span>
+      <h2>One student. One long-term journey.</h2>
+      <p>Anak tidak perlu memulai dari awal setiap kali naik kelas. Kemampuannya berkembang tahun demi tahun.</p>
+    </div>
+    <ol class="timeline">
+      <li><small>KELAS 1</small><div>Mengenal komputer</div></li>
+      <li><small>KELAS 3</small><div>Membuat digital story</div></li>
+      <li><small>KELAS 5</small><div>Membuat game</div></li>
+      <li><small>KELAS 7</small><div>Algoritma &amp; computational thinking</div></li>
+      <li><small>KELAS 8</small><div>Mulai Python</div></li>
+      <li><small>KELAS 9</small><div>Membuat website</div></li>
+      <li><small>KELAS 10</small><div>Mengolah data</div></li>
+      <li><small>KELAS 11</small><div>Membuat web application</div></li>
+      <li><small>KELAS 12</small><div>Capstone project</div></li>
+    </ol>
+    <p class="goal">Tujuannya: anak tidak hanya menjadi <em>pengguna teknologi</em>, tetapi belajar menjadi <em>creator</em>.</p>
+  </div>
 </section>
 
-<section style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 40px">
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">APA YANG ANAK DAPATKAN</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Bukan hanya belajar coding</h2>
-<p style="margin: 0; color: #4A4668">Melalui project yang mereka buat, anak berlatih berpikir logis, memecahkan masalah, mencoba, salah, memperbaiki, dan mengubah ide menjadi sesuatu yang nyata.</p>
-</div>
-<div style="flex: 2 1 560px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Logical thinking</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Menyusun langkah dan memahami cara program bekerja.</p></div>
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Problem solving</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Memecah masalah menjadi bagian yang bisa diselesaikan.</p></div>
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Creativity</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Mengubah ide menjadi game, website, dan aplikasi.</p></div>
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Technical skills</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Dari block coding ke Python, web, data, dan automation.</p></div>
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Project experience</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Membuat, menguji, memperbaiki, dan mempresentasikan.</p></div>
-<div style="background: #F5F5FB; border-radius: 16px; padding: 18px 20px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D">Portfolio</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Kumpulan karya yang menunjukkan perkembangan anak.</p></div>
-</div>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Apa yang anak dapatkan</span>
+      <h2>Bukan hanya belajar coding</h2>
+      <p>Melalui project yang mereka buat, anak berlatih berpikir logis, memecahkan masalah, mencoba, salah, memperbaiki, dan mengubah ide menjadi sesuatu yang nyata.</p>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3>Logical thinking</h3><p>Menyusun langkah dan memahami cara program bekerja.</p></div>
+      <div class="card"><h3>Problem solving</h3><p>Memecah masalah menjadi bagian yang bisa diselesaikan.</p></div>
+      <div class="card"><h3>Creativity</h3><p>Mengubah ide menjadi game, website, dan aplikasi.</p></div>
+      <div class="card"><h3>Technical skills</h3><p>Dari block coding ke Python, web, data, dan automation.</p></div>
+      <div class="card"><h3>Project experience</h3><p>Membuat, menguji, memperbaiki, dan mempresentasikan.</p></div>
+      <div class="card"><h3>Portfolio</h3><p>Kumpulan karya yang menunjukkan perkembangan anak.</p></div>
+    </div>
+  </div>
 </section>
 
-<section style="background: #F5F5FB">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">AI LEARNING</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Coding first. AI as an additional layer.</h2>
-<p style="margin: 0; color: #4A4668">AI dikenalkan bertahap dan sesuai usia, bukan sebagai pengganti coding. Coding tetap menjadi dasar; AI dipelajari dan digunakan secara bertanggung jawab.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
-<div style="background: #FFFFFF; border-radius: 20px; padding: 24px; border: 1px solid #DFDFEF"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #8A5300">KELAS 5–6</div><h3 style="margin: 4px 0 6px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 22px; color: #150E3D">AI Awareness</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Mengenal bagaimana AI dipakai dalam teknologi sehari-hari lewat eksplorasi dan creative projects.</p></div>
-<div style="background: #FFFFFF; border-radius: 20px; padding: 24px; border: 1px solid #DFDFEF"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #8A5300">KELAS 7–9</div><h3 style="margin: 4px 0 6px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 22px; color: #150E3D">AI Literacy</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Memahami data dan cara AI belajar, mengevaluasi jawaban AI, serta privasi dan misinformasi.</p></div>
-<div style="background: #FFFFFF; border-radius: 20px; padding: 24px; border: 1px solid #DFDFEF"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #8A5300">KELAS 10–12</div><h3 style="margin: 4px 0 6px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 22px; color: #150E3D">AI + Coding</h3><p style="margin: 0; font-size: 15px; color: #4A4668">Dasar machine learning dan membuat aplikasi web yang memanfaatkan AI.</p></div>
-</div>
-</div>
+<section class="sec bg-mist">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">AI learning</span>
+      <h2>Coding first. AI as an additional layer.</h2>
+      <p>AI dikenalkan bertahap dan sesuai usia, bukan sebagai pengganti coding. Coding tetap menjadi dasar; AI dipelajari dan digunakan secara bertanggung jawab.</p>
+    </div>
+    <div class="ai">
+      <div class="card"><small>KELAS 5–6</small><h3>AI Awareness</h3><p>Mengenal bagaimana AI dipakai dalam teknologi sehari-hari lewat eksplorasi dan creative projects.</p></div>
+      <div class="card"><small>KELAS 7–9</small><h3>AI Literacy</h3><p>Memahami data dan cara AI belajar, mengevaluasi jawaban AI, serta privasi dan misinformasi.</p></div>
+      <div class="card"><small>KELAS 10–12</small><h3>AI + Coding</h3><p>Dasar machine learning dan membuat aplikasi web yang memanfaatkan AI.</p></div>
+    </div>
+  </div>
 </section>
 
-<section id="biaya" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">BIAYA KELAS</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Online atau di HQ Coding Xplor</h2>
-<p style="margin: 0; color: #4A4668">60 menit · 1x seminggu · 1 pengajar untuk maksimal 10 anak.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
-<div style="border: 1px solid #DFDFEF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; border-top: 6px solid #F4B604">
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #8A5300">KELAS 1–3</div><h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px; color: #150E3D">Foundation</h3>
-<div style="font-size: 15px; color: #4A4668; margin-top: 6px">Mulai dari</div>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 32px; color: #150E3D">Rp 125.000<span style="font-size: 15px; font-weight: 700; color: #5C5878"> / kelas</span></div>
-</div>
-<div style="border: 1px solid #DFDFEF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; border-top: 6px solid #2AA4FF">
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #0B5C9E">KELAS 4–6</div><h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px; color: #150E3D">Builder</h3>
-<div style="font-size: 15px; color: #4A4668; margin-top: 6px">Mulai dari</div>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 32px; color: #150E3D">Rp 125.000<span style="font-size: 15px; font-weight: 700; color: #5C5878"> / kelas</span></div>
-</div>
-<div style="border: 1px solid #DFDFEF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; border-top: 6px solid #DA2585">
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #A3175F">KELAS 7–9</div><h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px; color: #150E3D">Developer</h3>
-<div style="font-size: 15px; color: #4A4668; margin-top: 6px">Mulai dari</div>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 32px; color: #150E3D">Rp 125.000<span style="font-size: 15px; font-weight: 700; color: #5C5878"> / kelas</span></div>
-</div>
-<div style="border: 1px solid #DFDFEF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 6px; border-top: 6px solid #150E3D">
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: 1.2px; color: #150E3D">KELAS 10–12</div><h3 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 24px; color: #150E3D">Creator</h3>
-<div style="font-size: 15px; color: #4A4668; margin-top: 6px">Mulai dari</div>
-<div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 32px; color: #150E3D">Rp 125.000<span style="font-size: 15px; font-weight: 700; color: #5C5878"> / kelas</span></div>
-</div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px 28px; background: #F5F5FB; border-radius: 16px; padding: 18px 22px; font-size: 15px">
-<span><strong style="color: #150E3D">Kelas privat:</strong> Rp 225.000–250.000 per pertemuan</span>
-<span><strong style="color: #150E3D">Bayar 1 tahun:</strong> hemat 10%</span>
-<span><strong style="color: #150E3D">Diskon saudara:</strong> hemat 10%</span>
-<span><strong style="color: #150E3D">Pendaftaran:</strong> Rp 150.000 (sekali bayar)</span>
-</div>
-</div>
+<section id="biaya" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Biaya kelas</span>
+      <h2>Online atau di HQ Coding Xplor</h2>
+      <p>60 menit · 1x seminggu · 1 pengajar untuk maksimal 10 anak.</p>
+    </div>
+    <div class="swipe">
+      <div class="price"><small>KELAS 1–3</small><h3>Foundation</h3><div class="from">Mulai dari</div><div class="amt">Rp 125.000<span> / kelas</span></div></div>
+      <div class="price c2"><small>KELAS 4–6</small><h3>Builder</h3><div class="from">Mulai dari</div><div class="amt">Rp 125.000<span> / kelas</span></div></div>
+      <div class="price c3"><small>KELAS 7–9</small><h3>Developer</h3><div class="from">Mulai dari</div><div class="amt">Rp 125.000<span> / kelas</span></div></div>
+      <div class="price c4"><small>KELAS 10–12</small><h3>Creator</h3><div class="from">Mulai dari</div><div class="amt">Rp 125.000<span> / kelas</span></div></div>
+    </div>
+    <p class="hint">Geser untuk melihat semua tahap →</p>
+    <ul class="extras">
+      <li><b>Kelas privat</b><span>Rp 225.000–250.000 / pertemuan</span></li>
+      <li><b>Bayar 1 tahun</b><span>Hemat 10%</span></li>
+      <li><b>Diskon saudara</b><span>Hemat 10%</span></li>
+      <li><b>Pendaftaran</b><span>Rp 150.000 (sekali bayar)</span></li>
+    </ul>
+  </div>
 </section>
 
-<section id="sekolah" style="background: #FEF6DC">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">UNTUK SEKOLAH</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Bawa Coding Xplor ke sekolah Anda</h2>
-<p style="margin: 0; color: #3D3960">Kurikulum coding Kelas 1–12 lengkap dengan materi, pengajar terlatih, rubrik penilaian, portfolio siswa, dan showcase setiap semester. Selaras dengan CP Informatika dan Koding &amp; Kecerdasan Artifisial (KKA), dan berjalan dengan computer lab yang sudah ada.</p>
-<a href="https://wa.me/6282298984848" style="align-self: flex-start; text-decoration: none; background: #150E3D; color: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; padding: 15px 26px; border-radius: 999px; margin-top: 6px">Jadwalkan free demo class</a>
-</div>
-<div style="flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<div style="background: #FFFFFF; border-radius: 16px; padding: 18px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #150E3D">Intrakurikuler</h3><p style="margin: 0; font-size: 14px; color: #4A4668">Mata pelajaran KKA atau Informatika.</p></div>
-<div style="background: #FFFFFF; border-radius: 16px; padding: 18px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #150E3D">Ekstrakurikuler</h3><p style="margin: 0; font-size: 14px; color: #4A4668">Program coding mingguan.</p></div>
-<div style="background: #FFFFFF; border-radius: 16px; padding: 18px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #150E3D">Coding Club</h3><p style="margin: 0; font-size: 14px; color: #4A4668">Untuk siswa yang ingin mendalami coding.</p></div>
-<div style="background: #FFFFFF; border-radius: 16px; padding: 18px"><h3 style="margin: 0 0 4px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #150E3D">Pilot Program</h3><p style="margin: 0; font-size: 14px; color: #4A4668">Mulai dari satu kelas selama satu semester.</p></div>
-</div>
-</div>
+<section id="sekolah" class="sec cream">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Untuk sekolah</span>
+      <h2>Bawa Coding Xplor ke sekolah Anda</h2>
+      <p>Kurikulum coding Kelas 1–12 lengkap dengan materi, pengajar terlatih, rubrik penilaian, portfolio siswa, dan showcase setiap semester. Selaras dengan CP Informatika dan Koding &amp; Kecerdasan Artifisial (KKA), dan berjalan dengan computer lab yang sudah ada.</p>
+    </div>
+    <div class="grid2">
+      <div class="card"><h3>Intrakurikuler</h3><p>Mata pelajaran KKA atau Informatika.</p></div>
+      <div class="card"><h3>Ekstrakurikuler</h3><p>Program coding mingguan.</p></div>
+      <div class="card"><h3>Coding Club</h3><p>Untuk siswa yang ingin mendalami coding.</p></div>
+      <div class="card"><h3>Pilot Program</h3><p>Mulai dari satu kelas selama satu semester.</p></div>
+    </div>
+    <a class="btn btn-navy school-cta" href="https://wa.me/6282298984848">Jadwalkan free demo class</a>
+  </div>
 </section>
 
-<section style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">BACKED BY ROBOTIC EXPLORER</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Why parents trust Coding Xplor</h2>
-<p style="margin: 0; color: #4A4668">Coding Xplor adalah sub-brand Robotic Explorer, yang mengembangkan pendidikan teknologi untuk anak dan pendidik di Indonesia sejak 2005.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
-<div style="background: #150E3D; border-radius: 18px; padding: 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; color: #F4B604; line-height: 1">20+</div><div style="color: #FFFFFF; font-weight: 600; margin-top: 6px; font-size: 15px">tahun pendidikan teknologi</div></div>
-<div style="background: #150E3D; border-radius: 18px; padding: 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; color: #F4B604; line-height: 1">200+</div><div style="color: #FFFFFF; font-weight: 600; margin-top: 6px; font-size: 15px">mitra edukasi</div></div>
-<div style="background: #150E3D; border-radius: 18px; padding: 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; color: #F4B604; line-height: 1">50.000+</div><div style="color: #FFFFFF; font-weight: 600; margin-top: 6px; font-size: 15px">siswa</div></div>
-<div style="background: #150E3D; border-radius: 18px; padding: 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; color: #F4B604; line-height: 1">6.000+</div><div style="color: #FFFFFF; font-weight: 600; margin-top: 6px; font-size: 15px">guru &amp; pendidik</div></div>
-<div style="background: #150E3D; border-radius: 18px; padding: 22px"><div style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 36px; color: #F4B604; line-height: 1">16</div><div style="color: #FFFFFF; font-weight: 600; margin-top: 6px; font-size: 15px">rekor MURI</div></div>
-</div>
-<p style="margin: 0; font-size: 13px; color: #5C5878">Angka di atas merupakan jangkauan dan pencapaian Robotic Explorer beserta ekosistem pendidikannya, bukan khusus Coding Xplor.</p>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Backed by Robotic Explorer</span>
+      <h2>Why parents trust Coding Xplor</h2>
+      <p>Coding Xplor adalah sub-brand Robotic Explorer, yang mengembangkan pendidikan teknologi untuk anak dan pendidik di Indonesia sejak 2005.</p>
+    </div>
+    <div class="nums">
+      <div><b>20+</b><span>tahun pendidikan teknologi</span></div>
+      <div><b>200+</b><span>mitra edukasi</span></div>
+      <div><b>50.000+</b><span>siswa</span></div>
+      <div><b>6.000+</b><span>guru &amp; pendidik</span></div>
+      <div><b>16</b><span>rekor MURI</span></div>
+    </div>
+    <p class="note">Angka di atas merupakan jangkauan dan pencapaian Robotic Explorer beserta ekosistem pendidikannya, bukan khusus Coding Xplor.</p>
+  </div>
 </section>
 
-<section id="faq" style="background: #F5F5FB">
-<div style="max-width: 900px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 10px">
-<span style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 1.5px; color: #8A5300">FAQ</span>
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.1; color: #150E3D; text-transform: uppercase">Pertanyaan yang sering diajukan</h2>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Anak saya belum pernah belajar coding. Apakah bisa ikut?</summary><p style="margin: 10px 0 0; color: #4A4668">Bisa. Setiap tahap dirancang untuk pemula di jenjang tersebut. Anak yang baru bergabung di kelas lebih tinggi mengikuti placement check agar mulai dari level yang sesuai.</p></details>
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Apakah anak harus pintar matematika atau bahasa Inggris?</summary><p style="margin: 10px 0 0; color: #4A4668">Tidak. Penjelasan diberikan dalam Bahasa Indonesia, dan istilah coding dalam bahasa Inggris dikenalkan sedikit demi sedikit.</p></details>
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Kelasnya online atau tatap muka?</summary><p style="margin: 10px 0 0; color: #4A4668">Bisa keduanya: kelas live online bersama pengajar, atau tatap muka di HQ Coding Xplor. Kurikulum dan project-nya sama.</p></details>
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Perangkat apa yang dibutuhkan untuk kelas online?</summary><p style="margin: 10px 0 0; color: #4A4668">Internet stabil, webcam, dan mikrofon. Kelas 1–3 membutuhkan tablet (iPad/Android) atau Chromebook untuk ScratchJr dengan pendampingan orang tua; Kelas 4–12 membutuhkan laptop atau PC.</p></details>
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Bagaimana saya tahu perkembangan anak?</summary><p style="margin: 10px 0 0; color: #4A4668">Orang tua menerima laporan perkembangan setiap semester, semua project tersimpan di portfolio anak, dan di akhir semester ada showcase final project.</p></details>
-<details style="background: #FFFFFF; border-radius: 16px; padding: 18px 22px"><summary style="font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 18px; color: #150E3D; min-height: 28px">Bisakah anak mencoba dulu?</summary><p style="margin: 10px 0 0; color: #4A4668">Bisa. Kami menyediakan free trial class selama 60 menit sebelum mendaftar.</p></details>
-</div>
-</div>
+<section id="faq" class="sec bg-mist faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Pertanyaan yang sering diajukan</h2>
+    </div>
+    <details><summary>Anak saya belum pernah belajar coding. Apakah bisa ikut?</summary><p>Bisa. Setiap tahap dirancang untuk pemula di jenjang tersebut. Anak yang baru bergabung di kelas lebih tinggi mengikuti placement check agar mulai dari level yang sesuai.</p></details>
+    <details><summary>Apakah anak harus pintar matematika atau bahasa Inggris?</summary><p>Tidak. Penjelasan diberikan dalam Bahasa Indonesia, dan istilah coding dalam bahasa Inggris dikenalkan sedikit demi sedikit.</p></details>
+    <details><summary>Kelasnya online atau tatap muka?</summary><p>Bisa keduanya: kelas live online bersama pengajar, atau tatap muka di HQ Coding Xplor. Kurikulum dan project-nya sama.</p></details>
+    <details><summary>Perangkat apa yang dibutuhkan untuk kelas online?</summary><p>Internet stabil, webcam, dan mikrofon. Kelas 1–3 membutuhkan tablet (iPad/Android) atau Chromebook untuk ScratchJr dengan pendampingan orang tua; Kelas 4–12 membutuhkan laptop atau PC.</p></details>
+    <details><summary>Bagaimana saya tahu perkembangan anak?</summary><p>Orang tua menerima laporan perkembangan setiap semester, semua project tersimpan di portfolio anak, dan di akhir semester ada showcase final project.</p></details>
+    <details><summary>Bisakah anak mencoba dulu?</summary><p>Bisa. Kami menyediakan free trial class selama 60 menit sebelum mendaftar.</p></details>
+  </div>
 </section>
 
-<section style="background: #150E3D; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
-<h2 style="margin: 0; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 44px; line-height: 1.05; text-transform: uppercase">Yuk, coba <span style="color: #F4B604">free trial class!</span></h2>
-<p style="margin: 0; color: #D9D6F2">Hubungi kami lewat WhatsApp untuk jadwal kelas online dan di HQ Coding Xplor.</p>
-</div>
-<a href="https://wa.me/6282298984848" style="text-decoration: none; background: #F4B604; color: #150E3D; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 20px; padding: 18px 30px; border-radius: 999px">WhatsApp 0822-9898-4848</a>
-</div>
+<section class="sec dark final">
+  <div class="wrap">
+    <h2>Yuk, coba <em>free trial class!</em></h2>
+    <p>Hubungi kami lewat WhatsApp untuk jadwal kelas online dan di HQ Coding Xplor.</p>
+    <a class="btn btn-yellow" href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a>
+  </div>
 </section>
+</main>
 
-<footer style="background: #FFFFFF; border-top: 1px solid #ECEBF5">
-<div style="max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 14px; color: #5C5878">
-<div style="display: flex; flex-direction: column; gap: 6px"><img src="logo.png" alt="Coding Xplor" style="height: 36px; width: auto; align-self: flex-start"><span>K–12 Coding &amp; Digital Creation Program · A sub-brand of Robotic Explorer</span></div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 24px"><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a><a href="https://xploracademy.id">xploracademy.id</a></div>
-</div>
+<footer>
+  <div class="wrap">
+    <img src="logo.png" alt="Coding Xplor">
+    <p>K–12 Coding &amp; Digital Creation Program · A sub-brand of Robotic Explorer</p>
+    <div class="links"><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a><a href="https://xploracademy.id">xploracademy.id</a></div>
+  </div>
 </footer>
 
+<div class="dock">
+  <a class="btn btn-yellow" href="https://wa.me/6282298984848">
+    <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>
+    Coba Free Trial
+  </a>
+  <a class="btn btn-ghost" href="#biaya">Biaya</a>
 </div>
+
+<script>
+(function(){
+  var b=document.querySelector('.menu-btn'), d=document.getElementById('drawer');
+  function set(open){d.classList.toggle('open',open);b.setAttribute('aria-expanded',open);b.setAttribute('aria-label',open?'Tutup menu':'Buka menu');}
+  b.addEventListener('click',function(){set(!d.classList.contains('open'));});
+  d.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
+})();
+</script>
 </body>
 </html>
