@@ -178,10 +178,20 @@ section{scroll-margin-top:64px}
 .final h2{font-size:30px;font-weight:900;color:#fff;text-transform:uppercase}
 .final h2 em{font-style:normal;color:var(--yellow)}
 .final p{color:#CFCBEA;margin:12px 0 22px}
-footer{padding:32px 0 24px;font-size:14px;color:var(--muted)}
-footer img{height:30px;width:auto;margin-bottom:10px}
-footer .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
-footer a{color:var(--navy);font-weight:700}
+footer{padding:40px 0 24px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+.foot{display:grid;grid-template-columns:1fr;gap:28px}
+.foot-brand img{height:34px;width:auto;margin-bottom:12px}
+.foot-brand p{line-height:1.6;max-width:420px}
+.foot h4{font:800 16px/1.2 var(--head);color:var(--navy);margin:0 0 12px}
+.foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot-list li{display:flex;gap:10px;align-items:flex-start}
+.foot-list svg{width:18px;height:18px;flex:none;color:var(--blue-ink);margin-top:1px}
+.foot-list a{color:var(--muted);text-decoration:none;word-break:break-word}
+.foot-list a:hover{color:var(--navy);text-decoration:underline}
+.social{display:flex;gap:10px}
+.social a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--navy)}
+.social a:hover{background:var(--mist)}
+.social svg{width:20px;height:20px}
 
 /* Tools */
 .tools{border-top:1px solid var(--line)}
@@ -189,7 +199,7 @@ footer a{color:var(--navy);font-weight:700}
 .logos div{background:#fff;border:1px solid var(--line);border-radius:16px;height:88px;display:flex;align-items:center;justify-content:center;padding:12px 16px}
 .logos img{max-height:58px;max-width:100%;width:auto;height:auto}
 .logos div:last-child{grid-column:span 2}
-.copy{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;font-size:13px}
+.copy{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:13px;text-align:center}
 
 /* Sticky bottom CTA (phones/tablets) */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;box-shadow:0 -8px 24px rgba(21,14,61,.08)}
@@ -216,6 +226,9 @@ footer a{color:var(--navy);font-weight:700}
   .ai{display:grid;grid-template-columns:repeat(3,1fr)}
   .nums{grid-template-columns:repeat(5,1fr)}
   .nums div:last-child{grid-column:auto}
+  .foot{grid-template-columns:1.3fr 1fr auto;gap:40px}
+  .foot-social{justify-self:end;text-align:right}
+  .social{justify-content:flex-end}
   .price-all{flex-direction:row;align-items:center;justify-content:space-between;padding:32px 36px}
   .price-all .amt{font-size:54px}
   .chips{max-width:460px}
@@ -476,10 +489,25 @@ footer a{color:var(--navy);font-weight:700}
 
 <footer>
   <div class="wrap">
-    <img src="logo.png" alt="Coding Xplor">
-    <p>K–12 Coding &amp; Digital Creation Program · A sub-brand of Robotic Explorer</p>
-    <div class="links"><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a><a href="https://xploracademy.id">xploracademy.id</a></div>
-    <p class="copy">Hak Cipta © 2026 Coding Xplor</p>
+    <div class="foot">
+      <div class="foot-brand">
+        <img src="logo.png" alt="Coding Xplor">
+        <p>Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi. A sub-brand of Robotic Explorer.</p>
+      </div>
+      <div>
+        <h4>Hubungi Kami</h4>
+        <ul class="foot-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:xploracademyofficial@gmail.com">xploracademyofficial@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="https://xploracademy.id">xploracademy.id</a></li>
+        </ul>
+      </div>
+      <div class="foot-social">
+        <h4>Ikuti Kami</h4>
+        <div class="social"><a href="https://www.instagram.com/codingxplor/" aria-label="Instagram Coding Xplor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div>
+      </div>
+    </div>
+    <p class="copy">© 2026 Coding Xplor. Hak Cipta Dilindungi.</p>
   </div>
 </footer>
 
