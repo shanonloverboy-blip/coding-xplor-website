@@ -8,525 +8,989 @@
 <meta name="description" content="Coding Xplor: program coding Kelas 1–12, online dan di HQ Coding Xplor. Anak belajar coding dengan membuat 22 project nyata setiap tahun. A sub-brand of Robotic Explorer.">
 <meta property="og:title" content="Coding Xplor — From First Code to Real-World Creation">
 <meta property="og:description" content="Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi.">
-<meta property="og:image" content="logo.png">
-<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:image" content="https://www.codingxplor.com/assets/launch-poster.jpg">
+<meta property="og:url" content="https://www.codingxplor.com/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Figtree:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#150E3D; --yellow:#F4B604; --blue:#2AA4FF; --pink:#DA2585;
-  --gold:#8A5300; --gold-2:#B76F00; --blue-ink:#0B5C9E; --pink-ink:#A3175F;
-  --cream:#FEF6DC; --sky:#E3F1FF; --rose:#FBE3EF; --mist:#F5F5FB;
-  --ink:#1C1838; --muted:#4A4668; --line:#E4E3F0;
-  --r:20px; --gutter:20px;
-  --head:'Nunito',system-ui,sans-serif; --body:'Figtree','Segoe UI',system-ui,sans-serif;
+  --navy:#150E3D; --navy-2:#1F1752; --navy-3:#2A2163; --lav:#DFDFEF; --lav-2:#EFEFF7; --white:#fff;
+  --yellow:#F4B604; --blue:#2AA4FF; --pink:#DA2585; --plum:#950862;
+  --yellow-ex:#C99500; --blue-ex:#1A7FCC; --pink-ex:#A81B66; --navy-ex:#07041A;
+  --ink:#150E3D; --muted:#5D5A78; --muted-2:#8D8AA8;
+  --r-card:28px; --r-pill:999px;
+  --shadow:0 18px 40px rgba(21,14,61,.12);
+  --head:'Nunito',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 var(--body);padding-bottom:84px}
-img{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:var(--head);color:var(--navy);margin:0;line-height:1.1}
-p{margin:0}
-section{scroll-margin-top:64px}
-.wrap{max-width:1680px;margin:0 auto;padding:0 var(--gutter)}
-.eyebrow{font:800 12px/1 var(--head);letter-spacing:1.4px;text-transform:uppercase;color:var(--gold)}
-.sec{padding:56px 0}
-.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;max-width:680px}
-.sec-head h2{font-size:28px;font-weight:900}
-.sec-head p{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:999px;font:800 16px/1 var(--head);text-decoration:none;border:2px solid transparent}
-.btn-yellow{background:var(--yellow);color:var(--navy)}
-.btn-navy{background:var(--navy);color:#fff}
-.btn-ghost{border-color:var(--navy);color:var(--navy)}
-.wa-ico{width:20px;height:20px;flex:none}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+.h-xl,.h-lg,.h-md{font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95}
+.h-xl{font-size:clamp(44px,8vw,100px)}
+.h-lg{font-size:clamp(36px,5.6vw,68px)}
+.h-md{font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.01em;line-height:1.05}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--muted);max-width:620px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:800 13px/1 var(--head);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono)}
+section{position:relative}
+.sec{padding:120px 0 0}
 
-/* Header */
-.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.top img{height:32px;width:auto}
-.menu-btn{width:44px;height:44px;border:0;background:var(--mist);border-radius:12px;display:grid;place-items:center;cursor:pointer}
-.menu-btn span,.menu-btn span::before,.menu-btn span::after{content:"";display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;position:relative}
-.menu-btn span::before{position:absolute;top:-6px}.menu-btn span::after{position:absolute;top:6px}
-.nav{display:none}
-.top-actions{display:flex;align-items:center;gap:8px}
-.login-sm{min-height:44px;padding:0 16px;font-size:14px;border-width:2px}
-.drawer{position:fixed;inset:60px 0 auto 0;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--gutter) 20px;display:none;flex-direction:column;z-index:29;box-shadow:0 16px 30px rgba(21,14,61,.12)}
-.drawer.open{display:flex}
-.drawer a{font:800 18px/1 var(--head);color:var(--navy);text-decoration:none;padding:16px 0;border-bottom:1px solid var(--line)}
-.drawer .btn{margin-top:16px;border-bottom:0}
+/* ---------- capsules ---------- */
+.chip{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:var(--r-pill);font:700 16px/1 var(--body);white-space:nowrap;
+  color:#fff;background:var(--c);box-shadow:0 5px 0 var(--ex),0 14px 26px rgba(21,14,61,.16)}
+.chip.y{--c:var(--yellow);--ex:var(--yellow-ex);color:var(--navy)} .chip.b{--c:var(--blue);--ex:var(--blue-ex)}
+.chip.p{--c:var(--pink);--ex:var(--pink-ex)} .chip.n{--c:var(--navy);--ex:var(--navy-ex)}
+.chip.o{--c:#fff;--ex:#E9C65A;color:var(--navy);box-shadow:inset 0 0 0 3px var(--yellow),0 5px 0 var(--ex),0 14px 26px rgba(21,14,61,.16)}
+.chip .ic{width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;margin-left:-6px}
+.chip .ic img{width:20px;height:20px;object-fit:contain}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 28px;border-radius:var(--r-pill);font:700 17px/1 var(--body);cursor:pointer;border:0;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)} .btn:active{transform:translateY(2px)}
+.btn.primary{background:var(--yellow);color:var(--navy);box-shadow:0 5px 0 var(--yellow-ex),0 14px 26px rgba(244,182,4,.3)}
+.btn.ghost{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 2px var(--lav),0 5px 0 var(--lav)}
+.btn.dark{background:var(--navy);color:#fff;box-shadow:0 5px 0 var(--navy-ex)}
 
-/* Hero */
-.hero{padding:28px 0 8px}
-.pill{display:inline-block;background:var(--yellow);color:var(--navy);font:800 11px/1.3 var(--head);letter-spacing:1.2px;padding:7px 12px;border-radius:999px}
-.hero h1{font-size:36px;font-weight:900;text-transform:uppercase;letter-spacing:-.3px;margin:16px 0 14px;line-height:1.02}
-.hero h1 em{font-style:normal;color:var(--gold-2)}
-.hero .lead{font:700 18px/1.45 var(--head);color:var(--navy)}
-.hero .sub{color:var(--muted);margin-top:10px}
-.hero .ctas{display:flex;flex-direction:column;gap:10px;margin-top:22px}
-.stages{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px;margin-top:28px}
-.stage{border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:4px;text-decoration:none}
-.stage small{font:800 11px/1 var(--head);letter-spacing:1px}
-.stage b{font:900 20px/1.1 var(--head);color:var(--navy)}
-.stage span{font-size:13px;color:var(--muted)}
-.s1{background:var(--cream)}.s1 small{color:var(--gold)}
-.s2{background:var(--sky)}.s2 small{color:var(--blue-ink)}
-.s3{background:var(--rose)}.s3 small{color:var(--pink-ink)}
-.s4{background:var(--navy)}.s4 small{color:var(--yellow)}.s4 b{color:#fff}.s4 span{color:#CFCBEA}
+/* ---------- logo lockup (AI_PRIMARY + CODING) ---------- */
+.lockup{position:relative;display:block}
+.lockup img{width:100%;height:auto}
+.lockup .coding{position:absolute;display:flex;justify-content:space-between;font-family:var(--head);font-weight:800;color:#170F40;line-height:1}
 
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.stat{border:1px solid var(--line);border-radius:18px;padding:16px}
-.stat b{display:block;font:900 30px/1 var(--head);color:var(--navy)}
-.stat strong{display:block;font:800 14px/1.25 var(--head);color:var(--navy);margin-top:6px}
-.stat span{display:block;font-size:13px;color:var(--muted);margin-top:2px;line-height:1.35}
+/* ---------- nav ---------- */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 28px);max-width:1160px;height:66px;
+  display:flex;align-items:center;gap:18px;padding:0 10px 0 22px;border-radius:var(--r-pill);background:rgba(255,255,255,.82);
+  backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 0 0 1px rgba(21,14,61,.06),0 12px 30px rgba(21,14,61,.08)}
+.nav .lockup{width:128px}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 auto}
+.nav ul a{display:block;padding:10px 14px;border-radius:var(--r-pill);font:500 15px/1 var(--body);color:var(--muted)}
+.nav ul a:hover{background:var(--lav-2);color:var(--navy)}
+.nav .btn{height:46px;padding:0 20px;font-size:15px}
+.btn.login{height:46px;padding:0 20px;font-size:15px;background:#fff;color:var(--navy);box-shadow:inset 0 0 0 2px var(--lav)}
+.burger{display:none;width:46px;height:46px;border-radius:50%;border:0;background:var(--lav-2);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:4px}
+.burger span{display:block;width:18px;height:2px;border-radius:2px;background:var(--navy);transition:transform .2s,opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.drawer{position:fixed;z-index:49;top:88px;left:14px;right:14px;border-radius:28px;background:#fff;padding:12px;display:flex;flex-direction:column;
+  box-shadow:0 0 0 1px rgba(21,14,61,.06),0 24px 50px rgba(21,14,61,.18)}
+.drawer[hidden]{display:none}
+.drawer a{padding:15px 16px;border-radius:16px;font:700 17px/1 var(--body)}
+.drawer a:not(.btn):hover{background:var(--lav-2)}
+.drawer .btn{margin-top:8px}
+.mbar{display:none}
 
-/* Swipe rows */
-.swipe{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter)*-1);padding:4px var(--gutter) 14px;scroll-padding:0 var(--gutter);scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.swipe::-webkit-scrollbar{display:none}
-.swipe>*{scroll-snap-align:start;flex:0 0 84%}
-.hint{font-size:13px;color:var(--muted);margin-top:-4px}
+/* ---------- hero ---------- */
+.hero{padding:170px 0 0;text-align:center;overflow:hidden;
+  background:radial-gradient(900px 500px at 15% 0%,rgba(244,182,4,.16),transparent 60%),radial-gradient(800px 600px at 95% 30%,rgba(42,164,255,.10),transparent 60%),
+             linear-gradient(180deg,#fff 0%,#F6F6FB 55%,#fff 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,#D6D6E9 2px,transparent 2.6px);background-size:36px 36px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 75%);mask-image:linear-gradient(180deg,#000 0%,transparent 75%);pointer-events:none}
+.hero .eyebrow{background:#fff;padding:10px 16px;border-radius:var(--r-pill);box-shadow:0 0 0 1px rgba(21,14,61,.06),0 8px 20px rgba(21,14,61,.06)}
+.hero .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 4px rgba(218,37,133,.15)}
+.hero h1{margin:26px auto 0;max-width:1000px}
+.hero h1 .caret{display:inline-block;width:.13em;height:.78em;background:var(--yellow);border-radius:.06em;vertical-align:-.04em;margin-left:.06em;animation:blink 1.06s steps(1) infinite}
+.hero .lead{margin:26px auto 0;text-align:center}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.hero .note{margin-top:18px;font:500 14px/1 var(--body);color:var(--muted-2)}
+.float{position:absolute;z-index:2;animation:bob 5s ease-in-out infinite}
+.float .chip{transform:rotate(var(--rot))}
+@keyframes bob{50%{transform:translateY(-12px)}}
+@keyframes blink{50%{opacity:0}}
 
-/* Program cards */
-.prog{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
-.prog-top{padding:18px}
-.prog-top small{font:800 11px/1 var(--head);letter-spacing:1px}
-.prog-top h3{font-size:24px;font-weight:900;margin-top:6px}
-.prog-top div{font:700 13px/1.3 var(--head);margin-top:4px}
-.prog-body{padding:18px;display:flex;flex-direction:column;gap:12px;color:var(--muted);font-size:15px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font:800 12px/1 var(--head);padding:8px 10px;border-radius:999px;color:var(--navy)}
-.p1 .prog-top{background:var(--yellow)}.p1 .tags span{background:var(--cream)}
-.p2 .prog-top{background:var(--blue)}.p2 .prog-top *{color:#fff}.p2 .tags span{background:var(--sky)}
-.p3 .prog-top{background:var(--pink)}.p3 .prog-top *{color:#fff}.p3 .tags span{background:var(--rose)}
-.p4 .prog-top{background:var(--navy)}.p4 .prog-top *{color:#fff}.p4 .prog-top small{color:var(--yellow)}.p4 .tags span{background:var(--mist)}
+/* ---------- class window (hero embed) ---------- */
+.window{position:relative;margin:80px auto 0;max-width:1100px;border-radius:30px;background:var(--navy);padding:14px;text-align:left;
+  box-shadow:0 50px 100px rgba(21,14,61,.28),0 0 0 1px rgba(21,14,61,.1)}
+.win-top{display:flex;align-items:center;gap:10px;padding:6px 8px 16px}
+.win-top .d{width:12px;height:12px;border-radius:50%}
+.win-top .file{margin-left:12px;font:700 15px/1 var(--body);color:#fff}
+.win-top .file span{color:#8C88B5;font-weight:400}
+.steps{display:flex;gap:8px;margin-left:auto}
+.step{padding:9px 14px;border-radius:var(--r-pill);font:800 12px/1 var(--head);letter-spacing:.1em;color:#8C88B5;box-shadow:inset 0 0 0 2px var(--navy-3);transition:all .3s}
+.step.on{color:#fff;box-shadow:none}
+.step.on.s1{background:var(--blue)} .step.on.s2{background:var(--yellow);color:var(--navy)} .step.on.s3{background:var(--pink)}
+.run{display:inline-flex;align-items:center;gap:8px;margin-left:8px;padding:9px 16px;border-radius:var(--r-pill);background:var(--yellow);color:var(--navy);font:700 14px/1 var(--body);box-shadow:0 4px 0 var(--yellow-ex)}
+.win-body{display:grid;grid-template-columns:1.05fr 1fr;gap:14px}
+.code{border-radius:20px;background:var(--navy-2);padding:22px 20px;font:500 15px/26px var(--mono);color:#E9E8F6;min-height:360px;white-space:pre;overflow:hidden}
+.code .ln{color:rgba(223,223,239,.3);display:inline-block;width:30px}
+.k{color:#FF6BB5}.s{color:var(--yellow)}.f{color:#5CBBFF}.c{color:#8C88B5}.n{color:var(--yellow)}
+.code .cur{display:inline-block;width:9px;height:18px;background:var(--yellow);vertical-align:-3px;animation:blink 1.06s steps(1) infinite}
+.game{position:relative;border-radius:20px;background:#EEEEF7;overflow:hidden;min-height:360px}
+.game .gd{position:absolute;inset:0;background-image:radial-gradient(circle,#D5D5E9 2.5px,transparent 3px);background-size:30px 30px}
+.game .ground{position:absolute;left:0;right:0;bottom:0;height:44px;background:var(--navy);border-radius:14px 14px 0 0}
+.game .plat{position:absolute;height:22px;border-radius:12px;background:var(--navy)}
+.game .coin{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--yellow);box-shadow:inset 0 -4px 0 var(--yellow-ex);transition:transform .2s,opacity .2s}
+.game .player{position:absolute;left:0;top:0;width:62px;height:62px;will-change:transform}
+.game .score{position:absolute;right:14px;top:14px;background:#fff;padding:8px 14px;border-radius:var(--r-pill);font:900 15px/1 var(--head);letter-spacing:.06em}
+.game .toast{position:absolute;left:50%;bottom:62px;transform:translate(-50%,20px);opacity:0;display:flex;align-items:center;gap:10px;background:#fff;padding:10px 18px 10px 10px;border-radius:var(--r-pill);font:700 15px/1 var(--body);box-shadow:0 10px 24px rgba(21,14,61,.18);transition:all .35s cubic-bezier(.3,1.6,.5,1);white-space:nowrap}
+.game .toast.on{opacity:1;transform:translate(-50%,0)}
+.game .toast b{width:26px;height:26px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;font-size:14px}
+.callout{position:absolute;z-index:3}
+.callout .chip{transform:rotate(var(--rot))}
 
-/* Steps */
-.bg-mist{background:var(--mist)}
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{background:#fff;border-radius:var(--r);padding:18px;display:grid;grid-template-columns:52px 1fr;gap:4px 14px;align-items:start}
-.step .n{grid-row:span 3;width:52px;height:52px;border-radius:16px;background:var(--yellow);display:grid;place-items:center;font:900 22px/1 var(--head);color:var(--navy)}
-.step small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--gold)}
-.step h3{font-size:22px;font-weight:900}
-.step p{color:var(--muted);font-size:15px}
-.step p b{color:var(--navy)}
+/* ---------- build something ---------- */
+.split{display:flex;flex-direction:column;gap:22px}
+.split .h-lg{max-width:1000px}
+.h-lg.wide{max-width:none}
+.split .lead{max-width:600px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.stat{border-radius:22px;background:var(--lav-2);padding:22px 22px 20px}
+.stat b{display:block;font:900 clamp(38px,4.4vw,54px)/1 var(--head);letter-spacing:-.03em}
+.stat span{display:block;margin-top:8px;font:800 12px/1.3 var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.belt{position:relative;margin-top:22px;height:420px;border-radius:var(--r-card);background:var(--navy);overflow:hidden}
+.belt .bd{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(223,223,239,.12) 2px,transparent 2.6px);background-size:36px 36px}
+.belt .track{position:absolute;left:-10%;top:150px;width:130%;height:96px;border-radius:48px;background:var(--navy-3);transform:rotate(-14deg);transform-origin:50% 50%}
+.belt .lane{position:absolute;left:-10%;top:150px;width:130%;height:96px;transform:rotate(-14deg)}
+.belt .lane .chip{position:absolute;top:24px;left:0;animation:travel 9s linear infinite;animation-delay:calc(var(--i) * -1.285s)}
+@keyframes travelM{0%{transform:translateX(1150px) scale(1)}86%{transform:translateX(70px) scale(1)}93%{transform:translateX(40px) scale(0)}100%{transform:translateX(40px) scale(0)}}
+@keyframes travel{0%{transform:translateX(118vw) scale(1)}84%{transform:translateX(min(14vw,170px)) scale(1)}92%{transform:translateX(min(10vw,120px)) scale(0)}100%{transform:translateX(min(10vw,120px)) scale(0)}}
+.belt .eater{position:absolute;left:28px;top:272px;width:150px}
+.belt .eater path{fill:none;stroke:#fff;stroke-width:46;stroke-linecap:round;stroke-linejoin:round}
+.belt .eater .l{animation:chompL 1.285s ease-in-out infinite}.belt .eater .r{animation:chompR 1.285s ease-in-out infinite}
+@keyframes chompL{0%,80%,100%{transform:translateX(0)}88%{transform:translateX(-18px)}}
+@keyframes chompR{0%,80%,100%{transform:translateX(0)}88%{transform:translateX(18px)}}
+.belt .label{position:absolute;right:28px;top:26px;text-align:right;color:#fff}
+.belt .label b{display:block;font:900 22px/1.1 var(--head);text-transform:uppercase;letter-spacing:-.01em}
+.belt .label span{font:400 15px/1.5 var(--body);color:#B9B6D6}
 
-/* Journey */
-.dark{background:var(--navy);color:#fff}
-.dark h2{color:#fff}.dark .sec-head p{color:#CFCBEA}.dark .eyebrow{color:var(--yellow)}
-.timeline{list-style:none;margin:0;padding:0 0 0 22px;position:relative}
-.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:24px;width:3px;border-radius:3px;background:linear-gradient(var(--yellow),var(--blue),var(--pink),#fff)}
-.timeline li{position:relative;padding:0 0 18px 14px}
-.timeline li::before{content:"";position:absolute;left:-21px;top:4px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--navy);box-shadow:0 0 0 2px #fff}
-.timeline small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--yellow)}
-.timeline div{font:800 17px/1.3 var(--head);margin-top:4px}
-.goal{font:800 20px/1.35 var(--head);margin-top:8px}
-.goal em{font-style:normal;color:var(--yellow)}
+/* ---------- journey ---------- */
+.journey{display:flex;gap:10px;margin-top:40px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.journey::-webkit-scrollbar{display:none}
+.jstop{flex:1 0 108px;border-radius:20px;padding:16px;background:var(--lav-2);position:relative}
+.jstop b{display:block;font:900 13px/1 var(--head);letter-spacing:.14em;color:var(--muted)}
+.jstop span{display:block;margin-top:10px;font:700 15px/1.3 var(--body)}
+.jstop::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--c,var(--blue));margin-bottom:12px}
 
-/* Card grids */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
-.card h3{font-size:16px;font-weight:900;margin-bottom:4px}
-.card p{font-size:14px;color:var(--muted);line-height:1.4}
-.ai{display:flex;flex-direction:column;gap:10px}
-.ai .card{display:flex;flex-direction:column;gap:4px;border-left:6px solid var(--blue)}
-.ai .card:nth-child(2){border-left-color:var(--pink)}.ai .card:nth-child(3){border-left-color:var(--navy)}
-.ai small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--blue-ink)}
-.ai .card:nth-child(2) small{color:var(--pink-ink)}.ai .card:nth-child(3) small{color:var(--navy)}
 
-/* Pricing */
-.price{border:1px solid var(--line);border-radius:var(--r);padding:18px;border-top:6px solid var(--yellow);display:flex;flex-direction:column;gap:4px;background:#fff}
-.price small{font:800 11px/1 var(--head);letter-spacing:1px;color:var(--gold)}
-.price h3{font-size:22px;font-weight:900}
-.price .from{font-size:14px;color:var(--muted);margin-top:8px}
-.price .amt{font:900 30px/1 var(--head);color:var(--navy)}
-.price .amt span{font-size:14px;font-weight:700;color:var(--muted)}
-.price.c2{border-top-color:var(--blue)}.price.c2 small{color:var(--blue-ink)}
-.price.c3{border-top-color:var(--pink)}.price.c3 small{color:var(--pink-ink)}
-.price.c4{border-top-color:var(--navy)}.price.c4 small{color:var(--navy)}
-.price-all{background:var(--navy);border-radius:24px;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
-.price-all .from{font:800 16px/1.2 var(--head);color:var(--yellow)}
-.price-all .amt{font:900 clamp(30px,9.5vw,40px)/1 var(--head);color:#fff;margin-top:6px;white-space:nowrap}
-.price-all .amt span{font-size:18px;font-weight:700;color:#CFCBEA}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{font:800 12px/1 var(--head);padding:9px 12px;border-radius:999px}
-.chips .k1{background:var(--yellow);color:var(--navy)}.chips .k2{background:var(--blue);color:#fff}.chips .k3{background:var(--pink);color:#fff}.chips .k4{background:#fff;color:var(--navy)}
-
-/* School */
-.cream{background:var(--cream)}
-.cream .card{border:0}
-.school-cta{margin-top:20px;width:100%;max-width:360px}
-
-/* Trust */
-.nums{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.nums div{background:var(--mist);border-radius:18px;padding:16px}
-.nums b{display:block;font:900 26px/1 var(--head);color:var(--navy)}
-.nums span{font-size:13px;color:var(--muted)}
-.nums div:last-child{grid-column:span 2}
-.note{font-size:12px;color:var(--muted);margin-top:12px}
-
-/* FAQ */
-.faq details{background:#fff;border-radius:16px;margin-bottom:10px}
-.faq summary{list-style:none;cursor:pointer;padding:18px 48px 18px 18px;font:800 16px/1.35 var(--head);color:var(--navy);position:relative}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font:900 24px/1 var(--head);color:var(--gold-2)}
-.faq details[open] summary::after{content:"–"}
-.faq details p{padding:0 18px 18px;color:var(--muted);font-size:15px}
-
-/* CTA + footer */
-.final{text-align:center}
-.final h2{font-size:30px;font-weight:900;color:#fff;text-transform:uppercase}
-.final h2 em{font-style:normal;color:var(--yellow)}
-.final p{color:#CFCBEA;margin:12px 0 22px}
-footer{padding:40px 0 24px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
-.foot{display:grid;grid-template-columns:1fr;gap:28px}
-.foot-brand img{height:34px;width:auto;margin-bottom:12px}
-.foot-brand p{line-height:1.6;max-width:420px}
-.foot h4{font:800 16px/1.2 var(--head);color:var(--navy);margin:0 0 12px}
-.foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.foot-list li{display:flex;gap:10px;align-items:flex-start}
-.foot-list svg{width:18px;height:18px;flex:none;color:var(--blue-ink);margin-top:1px}
-.foot-list a{color:var(--muted);text-decoration:none;word-break:break-word}
-.foot-list a:hover{color:var(--navy);text-decoration:underline}
-.social{display:flex;gap:10px}
-.social a{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--navy)}
-.social a:hover{background:var(--mist)}
-.social svg{width:20px;height:20px}
-
-/* Tools */
-.tools{border-top:1px solid var(--line)}
-.logos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.logos div{background:#fff;border:1px solid var(--line);border-radius:16px;height:88px;display:flex;align-items:center;justify-content:center;padding:12px 16px}
-.logos img{max-height:58px;max-width:100%;width:auto;height:auto}
-.logos div:last-child{grid-column:span 2}
-.copy{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:13px;text-align:center}
-
-/* Sticky bottom CTA (phones/tablets) */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;box-shadow:0 -8px 24px rgba(21,14,61,.08)}
-.dock .btn{flex:1;min-height:50px;font-size:15px;padding:0 12px}
-.dock .btn-ghost{flex:0 0 auto;padding:0 20px}
-
-@media (min-width:720px){
-  :root{--gutter:32px}
-  .sec{padding:80px 0}
-  .sec-head h2{font-size:38px}
-  .hero{padding:56px 0 16px}
-  .hero h1{font-size:54px}
-  .hero .ctas{flex-direction:row}
-  .stages{grid-template-columns:repeat(4,1fr)}
-  .stats{grid-template-columns:repeat(4,1fr)}
-  .swipe{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible;margin:0;padding:0}
-  .swipe>*{flex:none}
-  .hint{display:none}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr)}
-  .step{grid-template-columns:1fr}
-  .step .n{grid-row:auto;margin-bottom:8px}
-  .grid2{grid-template-columns:repeat(3,1fr)}
-  .grid4{grid-template-columns:repeat(2,1fr)}
-  .ai{display:grid;grid-template-columns:repeat(3,1fr)}
-  .nums{grid-template-columns:repeat(5,1fr)}
-  .nums div:last-child{grid-column:auto}
-  .foot{grid-template-columns:1.3fr 1fr auto;gap:40px}
-  .foot-social{justify-self:end;text-align:right}
-  .social{justify-content:flex-end}
-  .price-all{flex-direction:row;align-items:center;justify-content:space-between;padding:32px 36px}
-  .price-all .amt{font-size:54px}
-  .chips{max-width:460px}
-  .logos{grid-template-columns:repeat(5,1fr)}
-  .logos div:last-child{grid-column:auto}
-  .final h2{font-size:44px}
+/* ---------- learning road (journey) ---------- */
+.road{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto 44px auto;margin-top:44px;position:relative}
+.stage{grid-row:1;margin:0 6px 26px;padding:12px 16px;border-radius:18px;background:color-mix(in srgb,var(--c) 12%,#fff);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.stage b{font:900 15px/1 var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--c)}
+.stage:nth-child(4) b{color:#B98A00}
+.stage span{font:600 13px/1 var(--body);color:var(--muted)}
+.track{grid-row:3;grid-column:1/-1;align-self:center;display:grid;grid-template-columns:repeat(4,1fr);height:14px;border-radius:7px;overflow:hidden}
+.track i{background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.road.in .track i{transform:none}
+.road.in .track i:nth-child(2){transition-delay:.35s}.road.in .track i:nth-child(3){transition-delay:.7s}.road.in .track i:nth-child(4){transition-delay:1.05s}
+.node{grid-row:3;justify-self:center;align-self:center;z-index:2;width:44px;height:44px;border-radius:50%;background:#fff;
+  box-shadow:inset 0 0 0 5px var(--c),0 8px 18px rgba(21,14,61,.14);display:grid;place-items:center;font:900 16px/1 var(--head);color:var(--navy);
+  transform:scale(0);transition:transform .4s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(.3s + var(--d) * .12s)}
+.road.in .node{transform:none}
+.ms{justify-self:center;width:min(170px,15vw);text-align:center;font:700 15.5px/1.3 var(--body);color:var(--ink);position:relative;
+  opacity:0;transition:opacity .4s,transform .4s;transition-delay:calc(.4s + var(--d) * .12s)}
+.ms small{display:block;margin-bottom:6px;font:900 11.5px/1 var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
+.ms.up{grid-row:2;align-self:end;padding-bottom:30px;transform:translateY(10px)}
+.ms.down{grid-row:4;align-self:start;padding-top:30px;transform:translateY(-10px)}
+.ms::after{content:"";position:absolute;left:50%;width:2px;height:20px;background:var(--c);opacity:.35;border-radius:1px}
+.ms.up::after{bottom:4px}.ms.down::after{top:4px}
+.road.in .ms{opacity:1;transform:none}
+.ms[style*="--navy"] small{color:var(--navy)}
+@media (max-width:720px){
+  .road{display:block;padding-left:44px;margin-top:32px}
+  .road::before{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:6px;border-radius:3px;
+    background:linear-gradient(var(--pink) 0 22%,var(--blue) 22% 34%,var(--navy) 34% 67%,var(--yellow) 67%)}
+  .stage,.track,.node{display:none}
+  .ms,.ms.up,.ms.down{display:block;width:auto;text-align:left;padding:0 0 22px;transform:none;opacity:1;font-size:16px}
+  .ms::after{left:-36px;top:2px;bottom:auto;width:18px;height:18px;border-radius:50%;background:#fff;opacity:1;box-shadow:inset 0 0 0 5px var(--c)}
+  .ms.up::after{bottom:auto}
 }
-@media (min-width:1024px){
-  :root{--gutter:clamp(40px,5vw,96px)}
-  body{padding-bottom:0}
-  .dock,.menu-btn,.drawer,.login-sm,.top-actions{display:none !important}
-  .nav{display:flex;align-items:center;gap:24px;font:800 15px/1 var(--head)}
-  .nav a{text-decoration:none;color:var(--navy)}
-  .nav .btn{min-height:44px;padding:0 20px;color:#fff}
-  .nav .btn-ghost{color:var(--navy)}
-  .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:20px 48px;align-items:center}
-  .stages{grid-template-columns:1fr 1fr;margin-top:0}
-  .stage{padding:22px;min-height:140px}
-  .stage b{font-size:24px}
-  .stats{grid-column:1/-1;margin-top:20px}
-  .swipe{grid-template-columns:repeat(4,1fr)}
-  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0 24px}
-  .grid4{grid-template-columns:repeat(4,1fr)}
+
+/* ---------- bento ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:40px}
+.card{position:relative;border-radius:var(--r-card);background:var(--navy);color:#fff;padding:26px;overflow:hidden;min-height:300px;display:flex;flex-direction:column}
+.card.light{background:var(--lav-2);color:var(--ink)}
+.card .vis{flex:1;display:grid;place-items:center;margin:6px 0 20px;min-height:150px;position:relative}
+.card .tag{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;padding:7px 12px;border-radius:var(--r-pill);font:800 12px/1 var(--head);letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.1)}
+.card.light .tag{background:#fff}
+.card p{margin-top:8px;font:400 15.5px/1.5 var(--body);color:#B9B6D6}
+.card.light p{color:var(--muted)}
+.card .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.card .tools span{padding:6px 11px;border-radius:var(--r-pill);font:700 13px/1 var(--body);background:rgba(255,255,255,.08);color:#E9E8F6}
+.c2{grid-column:span 2}.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}
+/* bento visuals */
+.blocks{display:flex;flex-direction:column;gap:6px;transform:rotate(-4deg)}
+.blk{height:34px;border-radius:9px 9px 9px 9px;padding:0 14px;display:flex;align-items:center;font:700 14px/1 var(--body);color:#fff;position:relative}
+.blk::before{content:"";position:absolute;left:14px;top:-5px;width:18px;height:6px;border-radius:3px 3px 0 0;background:inherit}
+.bubbles{display:flex;flex-direction:column;gap:8px;width:100%;max-width:260px;font:500 13px/1.3 var(--mono)}
+.bub{padding:10px 14px;border-radius:16px;max-width:85%}
+.bub.bot{background:var(--navy-3);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.me{background:var(--yellow);color:var(--navy);align-self:flex-end;border-bottom-right-radius:4px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:140px}
+.bars i{display:block;width:30px;border-radius:9px 9px 3px 3px;background:var(--c);transform-origin:bottom;animation:grow 2.4s ease-in-out infinite alternate;animation-delay:calc(var(--i)*.15s)}
+@keyframes grow{from{transform:scaleY(.55)}to{transform:scaleY(1)}}
+.ai-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.ai{border-radius:18px;background:var(--navy-2);padding:18px}
+.ai b{display:block;font:900 12px/1 var(--head);letter-spacing:.14em;color:var(--yellow)}
+.ai h4{margin-top:10px;font:900 20px/1.05 var(--head);text-transform:uppercase}
+.ai p{margin-top:6px;font-size:14px}
+.marquee{display:flex;flex-direction:column;gap:12px;transform:rotate(-6deg);width:120%;margin-left:-10%}
+.mrow{display:flex;gap:12px;width:max-content;animation:slide 26s linear infinite}
+.mrow:nth-child(2){animation-direction:reverse;animation-duration:30s}
+.mrow .chip{font-size:15px;padding:10px 18px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- gallery ---------- */
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:20px}
+.gal-head a{font:700 16px/1 var(--body);color:var(--pink);white-space:nowrap}
+.gallery{margin-top:40px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.gtrack{display:flex;gap:18px;width:max-content;animation:slide 60s linear infinite;padding:0 20px}
+.gallery:hover .gtrack{animation-play-state:paused}
+.gcard{flex:none}
+.thumb{position:relative;height:340px;border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.thumb.w{width:520px}.thumb.t{width:272px}
+.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+.gmeta{margin-top:14px;padding-left:4px}
+.gmeta small{font:800 11px/1 var(--head);letter-spacing:.16em;color:var(--muted-2);text-transform:uppercase}
+.gmeta b{display:block;margin-top:6px;font:700 17px/1.2 var(--body)}
+.gmeta span{font:500 13px/1 var(--body);color:var(--muted-2)}
+.play{position:absolute;right:14px;bottom:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+/* thumbnails art */
+.th-story{background:var(--pink);display:grid;place-items:center}
+.th-story h5{font:900 46px/.95 var(--head);color:#fff;text-transform:uppercase;text-align:center;letter-spacing:-.02em}
+.th-story .sun{position:absolute;width:90px;height:90px;border-radius:50%;background:var(--yellow);right:38px;top:34px;box-shadow:0 0 0 18px rgba(244,182,4,.25)}
+.th-story .hill{position:absolute;left:-40px;right:-40px;bottom:-120px;height:200px;border-radius:50%;background:var(--plum)}
+.th-quiz{background:var(--blue);padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.th-quiz .q{background:#fff;border-radius:18px;padding:18px;font:900 30px/1 var(--head);text-align:center;color:var(--navy)}
+.th-quiz .ans{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.th-quiz .ans span{background:rgba(255,255,255,.2);border-radius:14px;padding:14px;text-align:center;font:900 22px/1 var(--head);color:#fff}
+.th-quiz .ans span.ok{background:var(--yellow);color:var(--navy)}
+.th-bot{background:var(--navy);padding:24px;display:flex;align-items:center}
+.th-web{background:var(--lav);padding:22px}
+.th-web .br{background:#fff;border-radius:16px;height:100%;overflow:hidden;display:flex;flex-direction:column}
+.th-web .bar{height:30px;background:var(--lav-2);display:flex;gap:6px;align-items:center;padding:0 12px}
+.th-web .bar i{width:9px;height:9px;border-radius:50%;background:#C9C8DE}
+.th-web .pg{padding:22px;flex:1}
+.th-web h6{font:900 34px/1 var(--head);text-transform:uppercase;letter-spacing:-.02em}
+.th-web .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.th-web .tiles i{height:86px;border-radius:12px;background:var(--c)}
+.th-data{background:var(--yellow);display:grid;place-items:center}
+.th-data .bars i{width:34px}
+.th-app{background:var(--navy);padding:26px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.th-app .row{display:flex;align-items:center;gap:12px;background:var(--navy-2);border-radius:14px;padding:13px 16px;color:#fff;font:700 15px/1 var(--body)}
+.th-app .row i{width:20px;height:20px;border-radius:6px;box-shadow:inset 0 0 0 2px #8C88B5}
+.th-app .row.done i{background:var(--yellow);box-shadow:none}
+.th-app .row.done{color:#8C88B5;text-decoration:line-through}
+
+/* ---------- how ---------- */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.howc{border-radius:var(--r-card);background:var(--lav-2);padding:16px 16px 26px;display:flex;flex-direction:column}
+.howc .screen{height:220px;border-radius:20px;background:var(--navy);position:relative;overflow:hidden;display:grid;place-items:center;padding:20px}
+.howc .num{margin:22px 10px 0;font:900 13px/1 var(--head);letter-spacing:.16em;color:var(--muted)}
+.howc h3{margin:10px 10px 0}
+.howc p{margin:10px 10px 0;font:400 16px/1.55 var(--body);color:var(--muted)}
+.proj{width:100%;border-radius:14px;background:#EEEEF7;height:100%;position:relative;overflow:hidden}
+.proj .quote{position:absolute;left:14px;top:14px;right:14px;background:#fff;border-radius:12px;padding:10px 12px;font:700 14px/1.3 var(--body);color:var(--navy)}
+
+/* ---------- features ---------- */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.feat{border-radius:24px;padding:24px;background:#fff;box-shadow:0 0 0 1px rgba(21,14,61,.07)}
+.feat .fi{width:58px;height:58px;border-radius:18px;background:var(--lav-2);display:grid;place-items:center}
+.feat .fi img{width:34px}
+.feat h4{margin-top:18px;font:900 18px/1.1 var(--head);text-transform:uppercase;letter-spacing:-.005em}
+.feat p{margin-top:8px;font:400 15.5px/1.55 var(--body);color:var(--muted)}
+
+/* ---------- pricing ---------- */
+.pricing{text-align:center}
+.pricing .lead{margin:20px auto 0}
+.toggle{display:inline-flex;margin-top:30px;padding:5px;border-radius:var(--r-pill);background:var(--lav-2);gap:4px}
+.toggle button{border:0;background:none;padding:12px 20px;border-radius:var(--r-pill);font:700 15px/1 var(--body);color:var(--muted);cursor:pointer}
+.toggle button.on{background:#fff;color:var(--navy);box-shadow:0 4px 12px rgba(21,14,61,.1)}
+.toggle button em{font-style:normal;margin-left:6px;padding:4px 8px;border-radius:var(--r-pill);background:var(--yellow);color:var(--navy);font-size:12px}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;text-align:left}
+.plan{position:relative;border-radius:var(--r-card);padding:24px 22px;background:#fff;box-shadow:0 0 0 1px rgba(21,14,61,.08);display:flex;flex-direction:column}
+.plan.hi{background:var(--navy);color:#fff;box-shadow:0 30px 60px rgba(21,14,61,.25)}
+.plan .pill{align-self:flex-start;padding:7px 12px;border-radius:var(--r-pill);font:900 12px/1 var(--head);letter-spacing:.12em;color:#fff;background:var(--c)}
+.plan .pill.y{color:var(--navy)}
+.plan h3{margin-top:16px;font:900 26px/1 var(--head);text-transform:uppercase;letter-spacing:-.01em}
+.plan .grade{margin-top:6px;font:500 15px/1 var(--body);color:var(--muted)}
+.plan.hi .grade,.plan.hi li{color:#B9B6D6}
+.plan .price{margin-top:22px;font:900 34px/1 var(--head);letter-spacing:-.02em}
+.plan .price small{font:500 14px/1 var(--body);color:var(--muted-2);letter-spacing:0;margin-left:4px}
+.plan .sub{margin-top:8px;font:500 13.5px/1.3 var(--body);color:var(--muted-2)}
+.plan ul{list-style:none;margin:22px 0 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.plan li{font:400 14.5px/1.4 var(--body);color:var(--muted);padding-left:24px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:3px;width:14px;height:14px;border-radius:50%;background:var(--c);opacity:.9}
+.plan .btn{height:48px;font-size:15px;width:100%}
+.sticker{position:absolute;z-index:2}
+.sticker .chip{font-size:13px;padding:8px 14px;transform:rotate(var(--rot))}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;text-align:left}
+.extra{border-radius:22px;background:var(--lav-2);padding:20px 22px}
+.extra b{display:block;font:900 13px/1 var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.extra span{display:block;margin-top:8px;font:700 18px/1.3 var(--body)}
+.fine{margin-top:18px;font:400 13px/1.5 var(--body);color:var(--muted-2)}
+
+
+/* ---------- pricing (simple) ---------- */
+.pricebar{margin-top:34px;border-radius:36px;background:var(--navy);color:#fff;padding:44px 48px 0;box-shadow:0 30px 60px rgba(21,14,61,.22);overflow:hidden}
+.pb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;padding-bottom:36px}
+.pricebar .from{font:800 18px/1 var(--head);color:var(--yellow)}
+.pricebar .big{margin-top:14px;font:900 clamp(48px,7vw,84px)/1 var(--head);letter-spacing:-.03em;white-space:nowrap}
+.pricebar .big small{font:700 clamp(16px,1.8vw,22px)/1 var(--body);letter-spacing:0;color:#B9B6D6;margin-left:10px}
+.pb-cta{display:flex;flex-direction:column;gap:12px;min-width:280px}
+.btn.onnavy{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.22)}
+.pricebar .stages{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.12)}
+.st{display:flex;align-items:center;gap:10px;padding:22px 0;font:800 17px/1 var(--head);white-space:nowrap}
+.st + .st{padding-left:24px;border-left:1px solid rgba(255,255,255,.12)}
+.st i{width:10px;height:10px;border-radius:50%;flex:none}
+.st em{font:500 14px/1 var(--body);font-style:normal;color:#8C88B5}
+@media (max-width:900px){.pricebar .stages{grid-template-columns:1fr 1fr}.st:nth-child(3){padding-left:0;border-left:0}.st:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12)}}
+@media (max-width:600px){.pricebar{padding:30px 24px 0;border-radius:28px}.pb-cta{min-width:0;width:100%}.pricebar .big small{display:block;margin:10px 0 0}
+  .pricebar .stages{grid-template-columns:1fr}.st,.st + .st{padding-left:0;border-left:0}.st + .st{border-top:1px solid rgba(255,255,255,.12)}}
+
+/* ---------- schools ---------- */
+.school{position:relative;border-radius:40px;background:#FFF5DA;padding:60px 52px 52px;overflow:hidden}
+.sdots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(201,149,0,.18) 2px,transparent 2.6px);background-size:36px 36px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 90%);mask-image:linear-gradient(90deg,transparent 30%,#000 90%)}
+.school-grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}
+.school-vis{position:relative;min-height:320px;display:grid;place-items:center}
+.lab{width:100%;max-width:400px;border-radius:26px;background:var(--navy);padding:20px;box-shadow:0 30px 60px rgba(21,14,61,.25);transform:rotate(2deg)}
+.lab-top{display:flex;justify-content:space-between;align-items:center;color:#fff;font:700 14px/1 var(--body);margin-bottom:16px}
+.lab-top b{font:900 12px/1 var(--head);letter-spacing:.1em;background:var(--yellow);color:var(--navy);padding:7px 10px;border-radius:99px;text-transform:uppercase}
+.desks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.desks i{aspect-ratio:4/3;border-radius:10px;background:var(--navy-2);box-shadow:inset 0 0 0 2px var(--navy-3);position:relative}
+.desks i::after{content:"";position:absolute;left:22%;right:22%;top:30%;height:4px;border-radius:2px;background:#3A3175;box-shadow:0 9px 0 #3A3175}
+.desks i.on{background:#22195A}
+.desks i.on::after{background:var(--yellow);box-shadow:0 9px 0 var(--blue);animation:type 2.4s ease-in-out infinite}
+.desks i.on:nth-child(3n)::after{animation-delay:-.8s}.desks i.on:nth-child(3n+1)::after{animation-delay:-1.6s}
+@keyframes type{50%{right:48%}}
+.school-vis .chip{position:absolute;transform:rotate(var(--rot))}
+.sc1{left:0;top:18px}.sc2{right:6px;top:60px}.sc3{left:22px;bottom:14px}
+.modes{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.mode{border-radius:24px;background:#fff;padding:20px;box-shadow:0 10px 26px rgba(201,149,0,.12)}
+.mi{width:50px;height:50px;border-radius:16px;display:grid;place-items:center}
+.mi img{width:28px;filter:brightness(0) invert(1)}
+.mode h4{margin-top:16px;font:900 19px/1.1 var(--head)}
+.mode p{margin-top:6px;font:400 15px/1.45 var(--body);color:var(--muted)}
+@media (max-width:1000px){.school-grid{grid-template-columns:1fr}.modes{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.school{padding:40px 22px 26px;border-radius:28px}.modes{grid-template-columns:1fr}.school-vis{min-height:280px}}
+
+/* ---------- trust ---------- */
+.trust{border-radius:36px;background:var(--navy);color:#fff;padding:56px 44px;overflow:hidden;position:relative}
+.trust .nums{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+.trust .nums div{border-radius:20px;background:var(--navy-2);padding:20px}
+.trust .nums b{display:block;font:900 clamp(30px,3.4vw,44px)/1 var(--head);color:var(--yellow);letter-spacing:-.02em}
+.trust .nums span{display:block;margin-top:10px;font:800 12px/1.3 var(--head);letter-spacing:.12em;text-transform:uppercase;color:#B9B6D6}
+.trust .lead{color:#B9B6D6}
+.trust .fine{color:#8C88B5}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin:40px auto 0;display:flex;flex-direction:column;gap:10px}
+details{border-radius:22px;background:var(--lav-2);padding:0 24px}
+summary{list-style:none;cursor:pointer;padding:22px 0;font:800 18px/1.3 var(--head);display:flex;justify-content:space-between;gap:20px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;font:900 20px/1 var(--head);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg);background:var(--yellow)}
+details p{padding:0 0 22px;font:400 16px/1.6 var(--body);color:var(--muted)}
+
+/* ---------- final cta ---------- */
+.final{text-align:center;padding:140px 0 120px}
+.final .lead{margin:22px auto 0}
+.howjoin{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px;margin:40px auto 0;text-align:left}
+.howjoin div{border-radius:20px;background:var(--lav-2);padding:18px}
+.howjoin b{font:900 13px/1 var(--head);letter-spacing:.14em;color:var(--pink)}
+.howjoin span{display:block;margin-top:10px;font:700 16px/1.35 var(--body)}
+
+/* ---------- tools ---------- */
+.tools-sec{padding:40px 0 100px}
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+.logo-card{height:118px;border-radius:24px;background:#fff;box-shadow:0 0 0 1px rgba(21,14,61,.08);display:grid;place-items:center;padding:18px;transition:transform .2s,box-shadow .2s}
+.logo-card:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(21,14,61,.08),0 16px 30px rgba(21,14,61,.08)}
+.logo-card img{height:70px;max-width:86%;object-fit:contain}
+.wm{font-family:var(--head);font-weight:900;line-height:1}
+.wm-sj{font-size:30px;color:#F7A20B;-webkit-text-stroke:1.5px #2AA4FF;letter-spacing:.02em}
+.wm-pb{font-size:26px;color:var(--navy)}
+.wm-js{font-size:64px;color:#000;letter-spacing:-.02em}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid rgba(21,14,61,.08);padding:56px 0 0;background:#fff}
+.fgrid{display:grid;grid-template-columns:1.3fr 1.4fr auto;gap:48px}
+.fbrand .lockup{width:150px}
+.fbrand p{margin-top:16px;font:400 16px/1.65 var(--body);color:var(--muted);max-width:420px}
+.fhq b,.fsocial b{display:block;font:800 18px/1 var(--head);margin-bottom:18px}
+.fhq ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.fhq li{display:flex;gap:12px;align-items:flex-start;font:400 16px/1.55 var(--body);color:var(--muted)}
+.fhq li a:hover{color:var(--navy)}
+.fhq svg,.ig svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--blue-ex);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.fsocial{text-align:right}
+.ig{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 1px rgba(21,14,61,.1)}
+.ig svg{stroke:var(--navy);margin:0}
+.fbottom{margin-top:44px;padding:22px 0 28px;border-top:1px solid rgba(21,14,61,.08);text-align:center;font:400 14px/1.4 var(--body);color:var(--muted)}
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .nav ul,.nav .nav-cta{display:none}
+  .burger{display:flex}
+  .nav{gap:10px}
+  .nav .lockup{margin-right:auto}
+  .mbar{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;position:fixed;z-index:48;left:12px;right:12px;bottom:12px;padding:8px;border-radius:999px;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 0 0 1px rgba(21,14,61,.06),0 12px 30px rgba(21,14,61,.14)}
+  .mbar .btn{height:48px;font-size:15px;padding:0 14px}
+  body{padding-bottom:84px}
+  .nav{justify-content:space-between}
+  .win-body{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr 1fr}
+  .c2,.c3,.c4,.c6{grid-column:span 2}
+  .how,.feats{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr 1fr}
+  .extras{grid-template-columns:1fr}
+  .trust .nums{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr}
+  .fsocial{text-align:left}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .howjoin{grid-template-columns:1fr 1fr}
+  .float.hide-sm,.callout{display:none}
 }
+@media (max-width:600px){
+  .sec{padding-top:88px}
+  br.d{display:none}
+  .hero h1{font-size:clamp(34px,11.2vw,48px)}
+  .belt .lane .chip{font-size:13px;padding:9px 14px;animation:travelM 13s linear infinite;animation-delay:calc(var(--i) * -1.857s)}
+  .belt .lane .chip .ic{width:22px;height:22px}.belt .lane .chip .ic img{width:15px;height:15px}
+  .hero{padding-top:130px}
+  .plans{grid-template-columns:1fr}
+  .ai-row{grid-template-columns:1fr}
+  .logos{grid-template-columns:1fr 1fr}
+  .logo-card{height:96px}
+  .thumb.w{width:300px;height:240px}.thumb.t{width:192px;height:240px}
+  .trust{padding:40px 22px;border-radius:28px}
+  .belt{height:320px}
+  .belt .track,.belt .lane{top:110px}
+  .belt .eater{left:6px;top:196px;width:110px}
+  .code{font-size:12.5px;line-height:22px;min-height:0}
+  .game{min-height:260px}
+  .steps{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
 
-<header class="top">
-  <div class="wrap">
-    <a href="#top" aria-label="Coding Xplor, kembali ke atas"><img src="logo.png" alt="Coding Xplor"></a>
-    <nav class="nav" aria-label="Navigasi utama">
-      <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
-      <a class="btn btn-ghost" href="https://roboticexplorer.id/login/index.php">Log In</a>
-      <a class="btn btn-navy" href="https://wa.me/6282298984848">Coba Free Trial</a>
-    </nav>
-    <div class="top-actions">
-      <a class="btn btn-ghost login-sm" href="https://roboticexplorer.id/login/index.php">Log In</a>
-      <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="lockup" data-lockup aria-label="Coding Xplor"><img src="assets/AI_PRIMARY.png" alt="Xplor"><span class="coding"><span>C</span><span>O</span><span>D</span><span>I</span><span>N</span><span>G</span></span></a>
+  <ul>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#journey">Kurikulum</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#gallery">Galeri</a></li>
+    <li><a href="#how">Cara Belajar</a></li>
+    <li><a href="#pricing">Biaya</a></li>
+    <li><a href="#sekolah">Sekolah</a></li>
+  </ul>
+  <a class="btn login" href="https://roboticexplorer.id/login/index.php">Log In</a>
+  <a class="btn primary nav-cta" href="https://wa.me/6282298984848">Coba Free Trial</a>
+  <button class="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+</nav>
+<div class="drawer" id="drawer" hidden>
+  <a href="#program">Program</a><a href="#journey">Kurikulum</a><a href="#tools">Tools</a><a href="#gallery">Galeri</a>
+  <a href="#how">Cara Belajar</a><a href="#pricing">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
+  <a class="btn primary" href="https://wa.me/6282298984848">Coba Free Trial</a>
+</div>
+<div class="mbar">
+  <a class="btn primary" href="https://wa.me/6282298984848">Coba Free Trial</a>
+  <a class="btn ghost" href="#pricing">Biaya</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="dots"></div>
+  <div class="float hide-sm" style="left:6%;top:180px;animation-delay:-1s"><span class="chip p" style="--rot:-6deg">“make it jump”</span></div>
+  <div class="float hide-sm" style="right:7%;top:160px;animation-delay:-2.5s"><span class="chip b" style="--rot:5deg">PictoBlox</span></div>
+  <div class="float hide-sm" style="left:4%;top:400px;animation-delay:-3.2s"><span class="chip y" style="--rot:-4deg"><span class="ic"><img src="assets/icons/ICONS_CODING.png" alt=""></span>Python</span></div>
+  <div class="float hide-sm" style="right:4%;top:390px;animation-delay:-.6s"><span class="chip n mono" style="--rot:6deg">print("Halo!")</span></div>
+  <div class="float hide-sm" style="left:13%;top:560px;animation-delay:-4s"><span class="chip o" style="--rot:4deg">ScratchJr</span></div>
+  <div class="float hide-sm" style="right:12%;top:575px;animation-delay:-1.8s"><span class="chip p" style="--rot:-5deg">“add a score”</span></div>
+
+  <div class="wrap" style="position:relative;z-index:3">
+    <span class="eyebrow"><i></i>Kelas 1–12 · Online &amp; HQ</span>
+    <h1 class="h-xl">From first code<br class="d"> to real&#8209;world<br class="d"> creation.<span class="caret"></span></h1>
+    <p class="lead">Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi. Setiap pertemuan, anak membuat sesuatu.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#daftar">Coba Free Trial Class</a>
+      <a class="btn ghost" href="#program">Lihat Program</a>
+    </div>
+    <p class="note">Gratis 60 menit · Live bersama pengajar · Online &amp; HQ</p>
+  </div>
+
+  <!-- class window -->
+  <div class="wrap" style="position:relative">
+    <div class="callout" style="left:-6px;top:150px"><span class="chip b" style="--rot:-5deg">Show: lihat yang akan dibuat</span></div>
+    <div class="callout" style="right:-10px;top:300px"><span class="chip y" style="--rot:4deg">Make: belajar sambil membuat</span></div>
+    <div class="callout" style="left:30%;bottom:-24px"><span class="chip p" style="--rot:-3deg">Share: simpan ke portfolio</span></div>
+    <div class="window rv">
+      <div class="win-top">
+        <span class="d" style="background:var(--pink)"></span><span class="d" style="background:var(--yellow)"></span><span class="d" style="background:var(--blue)"></span>
+        <span class="file">arcade_game.py <span>· Builder · Pertemuan 7</span></span>
+        <div class="steps"><span class="step s1">01 SHOW</span><span class="step s2">02 MAKE</span><span class="step s3">03 SHARE</span></div>
+        <span class="run">▶ Run</span>
+      </div>
+      <div class="win-body">
+        <div class="code" id="code"></div>
+        <div class="game" id="game">
+          <div class="gd"></div>
+          <div class="plat" style="left:56%;top:46%;width:22%"></div>
+          <div class="plat" style="left:12%;top:34%;width:18%"></div>
+          <div class="coin" style="left:65%;top:36%"></div><div class="coin" style="left:19%;top:24%"></div><div class="coin" style="left:86%;top:62%"></div>
+          <div class="ground"></div>
+          <img class="player" id="player" src="assets/AI_LOGOMARK.png" alt="">
+          <div class="score">SCORE <span id="score">0</span></div>
+          <div class="toast" id="toast"><b>✓</b>Saved to portfolio</div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
-<div class="drawer" id="drawer">
-  <a href="#program">Program</a><a href="#cara-belajar">Cara Belajar</a><a href="#biaya">Biaya</a><a href="#sekolah">Untuk Sekolah</a><a href="#faq">FAQ</a>
-  <a href="https://roboticexplorer.id/login/index.php">Log In</a>
-  <a class="btn btn-yellow" href="https://wa.me/6282298984848">Coba Free Trial Class</a>
-</div>
 
-<main>
-<section id="top" class="hero">
+<!-- BUILD SOMETHING -->
+<section class="sec" id="program">
   <div class="wrap">
-    <div>
-      <span class="pill">KELAS 1–12 · ONLINE &amp; HQ</span>
-      <h1>From first code to <em>real-world creation</em></h1>
-      <p class="lead">Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi.</p>
-      <p class="sub">Anak tidak hanya belajar teori atau menghafal syntax. Mereka belajar coding dengan membuat sesuatu, dari cerita digital dan game sampai website, aplikasi, dan data projects.</p>
-      <div class="ctas">
-        <a class="btn btn-yellow" href="https://wa.me/6282298984848">Coba Free Trial Class</a>
-        <a class="btn btn-ghost" href="#program">Lihat Program</a>
+    <div class="split rv">
+      <h2 class="h-lg">Every class <span style="color:var(--pink)">=</span> build something.</h2>
+      <p class="lead">Bukan hanya belajar coding. Anak membuat sesuatu. Setiap project menjadi bagian dari perjalanan belajar dan portfolio anak, dan project berkembang seiring bertambahnya kemampuan.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>32</b><span>Pertemuan per tahun</span></div>
+      <div class="stat"><b>22</b><span>Project per tahun</span></div>
+      <div class="stat"><b>2</b><span>Final project</span></div>
+      <div class="stat"><b>2</b><span>Semester showcase</span></div>
+    </div>
+    <div class="belt rv" aria-label="Project berkembang: Digital Story, Game, Python Program, Website, Data Project, Web Application, Real-World Project">
+      <div class="bd"></div>
+      <div class="track"></div>
+      <div class="lane">
+        <span class="chip p" style="--i:0"><span class="ic"><img src="assets/icons/ICONS_LEARNING.png" alt=""></span>Digital Story</span>
+        <span class="chip b" style="--i:1"><span class="ic"><img src="assets/icons/ICONS_GAMES.png" alt=""></span>Game</span>
+        <span class="chip y" style="--i:2"><span class="ic"><img src="assets/icons/ICONS_CODING.png" alt=""></span>Python Program</span>
+        <span class="chip o" style="--i:3"><span class="ic"><img src="assets/icons/ICONS_COMPUTER.png" alt=""></span>Website</span>
+        <span class="chip b" style="--i:4"><span class="ic"><img src="assets/icons/ICONS_DATA.png" alt=""></span>Data Project</span>
+        <span class="chip p" style="--i:5"><span class="ic"><img src="assets/icons/ICONS_COMPUTER.png" alt=""></span>Web Application</span>
+        <span class="chip y" style="--i:6"><span class="ic"><img src="assets/icons/ICONS_AWARDS.png" alt=""></span>Real-World Project</span>
+      </div>
+      <svg class="eater" viewBox="0 0 600 400" aria-hidden="true">
+        <g class="l"><path d="M215 60 L70 200 L215 340"/></g><g class="r"><path d="M385 60 L530 200 L385 340"/></g>
+        <rect x="282" y="118" width="36" height="164" rx="18" fill="#F4B604"/>
+      </svg>
+      <div class="label"><b>Portfolio anak</b><span>Semua project tersimpan.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY + BENTO -->
+<section class="sec" id="journey">
+  <div class="wrap">
+    <div class="split rv">
+      <h2 class="h-lg">One student. One long journey.</h2>
+      <p class="lead">Anak tidak perlu memulai dari awal setiap kali naik kelas. Kemampuan berkembang bertahap, dari visual coding menuju real programming, sesuai kesiapan.</p>
+    </div>
+    <div class="road rv" aria-label="Perjalanan belajar Kelas 1 sampai 12">
+      <div class="stage" style="grid-column:1/4;--c:var(--pink);--fg:#fff"><b>Foundation</b><span>Kelas 1–3</span></div>
+      <div class="stage" style="grid-column:4/7;--c:var(--blue);--fg:#fff"><b>Builder</b><span>Kelas 4–6</span></div>
+      <div class="stage" style="grid-column:7/10;--c:var(--navy);--fg:#fff"><b>Developer</b><span>Kelas 7–9</span></div>
+      <div class="stage" style="grid-column:10/13;--c:var(--yellow);--fg:var(--navy)"><b>Creator</b><span>Kelas 10–12</span></div>
+      <div class="track"><i style="--c:var(--pink)"></i><i style="--c:var(--blue)"></i><i style="--c:var(--navy)"></i><i style="--c:var(--yellow)"></i></div>
+      <div class="node" style="grid-column:1;--c:var(--pink);--d:0">1</div>
+      <div class="ms up" style="grid-column:1;--c:var(--pink);--d:0"><small>Kelas 1</small>Mengenal komputer</div>
+      <div class="node" style="grid-column:3;--c:var(--pink);--d:1">3</div>
+      <div class="ms down" style="grid-column:3;--c:var(--pink);--d:1"><small>Kelas 3</small>Membuat digital story</div>
+      <div class="node" style="grid-column:5;--c:var(--blue);--d:2">5</div>
+      <div class="ms up" style="grid-column:5;--c:var(--blue);--d:2"><small>Kelas 5</small>Membuat game</div>
+      <div class="node" style="grid-column:7;--c:var(--navy);--d:3">7</div>
+      <div class="ms down" style="grid-column:7;--c:var(--navy);--d:3"><small>Kelas 7</small>Algoritma &amp; computational thinking</div>
+      <div class="node" style="grid-column:8;--c:var(--navy);--d:4">8</div>
+      <div class="ms up" style="grid-column:8;--c:var(--navy);--d:4"><small>Kelas 8</small>Mulai Python</div>
+      <div class="node" style="grid-column:9;--c:var(--navy);--d:5">9</div>
+      <div class="ms down" style="grid-column:9;--c:var(--navy);--d:5"><small>Kelas 9</small>Membuat website</div>
+      <div class="node" style="grid-column:10;--c:var(--yellow);--d:6">10</div>
+      <div class="ms up" style="grid-column:10;--c:var(--yellow);--d:6"><small>Kelas 10</small>Mengolah data</div>
+      <div class="node" style="grid-column:11;--c:var(--yellow);--d:7">11</div>
+      <div class="ms down" style="grid-column:11;--c:var(--yellow);--d:7"><small>Kelas 11</small>Membuat web application</div>
+      <div class="node" style="grid-column:12;--c:var(--yellow);--d:8">12</div>
+      <div class="ms up" style="grid-column:12;--c:var(--yellow);--d:8"><small>Kelas 12</small>Capstone project</div>
+    </div>
+
+    <div class="bento">
+      <article class="card c3 rv" style="background:var(--pink)">
+        <div class="vis"><div class="blocks">
+          <div class="blk" style="background:var(--yellow);color:var(--navy);width:190px">when tapped</div>
+          <div class="blk" style="background:var(--blue);width:160px">move → 5</div>
+          <div class="blk" style="background:var(--navy);width:200px">say "Halo!"</div>
+          <div class="blk" style="background:var(--plum);width:140px">repeat 3</div>
+        </div></div>
+        <span class="tag">Kelas 1–3</span>
+        <h3 class="h-md" style="margin-top:12px">Foundation</h3>
+        <p style="color:#FFD6EA">Dasar komputer, typing, logika, sequence, dan basic coding. Contoh project: Digital Picture Book, Animated Story.</p>
+        <div class="tools"><span>ScratchJr</span></div>
+      </article>
+      <article class="card c3 rv" style="background:var(--blue)">
+        <div class="vis">
+          <div style="position:relative;width:260px;height:150px;border-radius:18px;background:rgba(255,255,255,.18)">
+            <div style="position:absolute;left:0;right:0;bottom:0;height:26px;background:var(--navy);border-radius:0 0 18px 18px"></div>
+            <div style="position:absolute;left:150px;top:62px;width:70px;height:14px;border-radius:7px;background:var(--navy)"></div>
+            <div class="coin" style="position:absolute;left:176px;top:36px;width:18px;height:18px;border-radius:50%;background:var(--yellow)"></div>
+            <img src="assets/AI_LOGOMARK.png" alt="" style="position:absolute;left:40px;top:52px;width:58px;animation:bob 1.2s ease-in-out infinite">
+            <span style="position:absolute;right:10px;top:10px;background:#fff;color:var(--navy);padding:6px 10px;border-radius:99px;font:900 12px/1 var(--head)">SCORE 3</span>
+          </div>
+        </div>
+        <span class="tag">Kelas 4–6</span>
+        <h3 class="h-md" style="margin-top:12px">Builder</h3>
+        <p style="color:#DDF0FF">Animation, games, dan interactive projects, sambil belajar variables, logic, dan problem solving. Contoh: Arcade Game, Quiz Game.</p>
+        <div class="tools"><span>PictoBlox</span></div>
+      </article>
+      <article class="card c3 rv">
+        <div class="vis"><div class="bubbles">
+          <div class="bub bot">Halo! Siapa namamu?</div>
+          <div class="bub me">Rara</div>
+          <div class="bub bot">Hai Rara! Mau main kuis? 🙂</div>
+        </div></div>
+        <span class="tag">Kelas 7–9</span>
+        <h3 class="h-md" style="margin-top:12px">Developer</h3>
+        <p>Masuk ke real programming: algoritma, debugging, Python, HTML, CSS, dan web development. Contoh: Python Chatbot, Portfolio Website.</p>
+        <div class="tools"><span>PictoBlox</span><span>Python</span><span>HTML/CSS</span></div>
+      </article>
+      <article class="card c3 rv" style="background:var(--yellow);color:var(--navy)">
+        <div class="vis"><div class="bars">
+          <i style="--c:var(--navy);--i:0;height:60%"></i><i style="--c:var(--pink);--i:1;height:85%"></i><i style="--c:var(--blue);--i:2;height:45%"></i>
+          <i style="--c:var(--navy);--i:3;height:100%"></i><i style="--c:var(--pink);--i:4;height:72%"></i><i style="--c:var(--blue);--i:5;height:90%"></i>
+        </div></div>
+        <span class="tag" style="background:rgba(21,14,61,.1)">Kelas 10–12</span>
+        <h3 class="h-md" style="margin-top:12px">Creator</h3>
+        <p style="color:#5A4700">Python, data, JavaScript, databases, APIs, Git, dan automation. Contoh: School Data Report, Interactive Web Application, Capstone Project.</p>
+        <div class="tools"><span style="background:rgba(21,14,61,.1);color:var(--navy)">Python</span><span style="background:rgba(21,14,61,.1);color:var(--navy)">JavaScript</span><span style="background:rgba(21,14,61,.1);color:var(--navy)">Git</span></div>
+      </article>
+      <article class="card c4 rv">
+        <span class="tag"><img src="assets/icons/ICONS_ROBOTS.png" alt="" style="width:18px;filter:invert(1)">AI Learning</span>
+        <h3 class="h-md" style="margin-top:14px">AI, bagian dari perjalanan coding.</h3>
+        <p>AI diperkenalkan bertahap dan sesuai usia. Coding tetap menjadi dasar; AI menjadi teknologi tambahan yang dipelajari dan digunakan secara bertanggung jawab.</p>
+        <div class="ai-row">
+          <div class="ai"><b>KELAS 5–6</b><h4>AI Awareness</h4><p>Mengenal AI dalam teknologi sehari-hari.</p></div>
+          <div class="ai"><b>KELAS 7–9</b><h4>AI Literacy</h4><p>Data, cara kerja AI, dan responsible AI use.</p></div>
+          <div class="ai"><b>KELAS 10–12</b><h4>AI + Coding</h4><p>Machine learning dasar dan project berbasis AI.</p></div>
+        </div>
+      </article>
+      <article class="card c2 light rv" style="padding:26px 0 26px">
+        <div class="vis" style="overflow:hidden;margin:0 0 20px">
+          <div class="marquee">
+            <div class="mrow"><span class="chip p">ScratchJr</span><span class="chip b">PictoBlox</span><span class="chip y">Python</span><span class="chip n">HTML</span><span class="chip o">CSS</span><span class="chip p">JavaScript</span><span class="chip b">Git</span><span class="chip p">ScratchJr</span><span class="chip b">PictoBlox</span><span class="chip y">Python</span><span class="chip n">HTML</span><span class="chip o">CSS</span><span class="chip p">JavaScript</span><span class="chip b">Git</span></div>
+            <div class="mrow"><span class="chip n mono">loop</span><span class="chip y mono">if / else</span><span class="chip b mono">variable</span><span class="chip o mono">debug</span><span class="chip p mono">def</span><span class="chip n mono">API</span><span class="chip n mono">loop</span><span class="chip y mono">if / else</span><span class="chip b mono">variable</span><span class="chip o mono">debug</span><span class="chip p mono">def</span><span class="chip n mono">API</span></div>
+          </div>
+        </div>
+        <div style="padding:0 26px">
+          <h3 class="h-md">Dari blok ke kode nyata.</h3>
+          <p>Naik bertahap, dari visual coding menuju Python, web, data, dan automation.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec" id="gallery">
+  <div class="wrap gal-head rv">
+    <div><h2 class="h-lg">Project gallery.</h2><p class="lead" style="margin-top:18px">Contoh jenis project yang dibuat di setiap tahap.</p></div>
+  </div>
+  <div class="gallery rv">
+    <div class="gtrack" id="gtrack">
+      <div class="gcard"><div class="thumb t"><video src="assets/launch-web.mp4" poster="assets/launch-poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
+        <div class="gmeta"><small>Coding Xplor</small><b>From first code to real-world creation.</b><span>4:5 · 22 s</span></div></div>
+      <div class="gcard"><div class="thumb w th-story"><div class="sun"></div><div class="hill"></div><h5 style="position:relative">Once upon<br>a time…</h5></div>
+        <div class="gmeta"><small>Foundation · Kelas 1–3</small><b>Animated Story</b><span>ScratchJr</span></div></div>
+      <div class="gcard"><div class="thumb t th-quiz"><div class="q">2 + 3 = ?</div><div class="ans"><span>4</span><span class="ok">5</span><span>6</span><span>7</span></div></div>
+        <div class="gmeta"><small>Builder · Kelas 4–6</small><b>Quiz Game</b><span>PictoBlox</span></div></div>
+      <div class="gcard"><div class="thumb w th-bot"><div class="bubbles" style="max-width:none;font-size:16px">
+          <div class="bub bot" style="color:#fff">&gt;&gt;&gt; Halo! Aku XplorBot. Siapa namamu?</div><div class="bub me">Budi</div><div class="bub bot" style="color:#fff">Senang kenalan, Budi! Mau tebak angka?</div></div></div>
+        <div class="gmeta"><small>Developer · Kelas 7–9</small><b>Python Chatbot</b><span>Python</span></div></div>
+      <div class="gcard"><div class="thumb w th-web"><div class="br"><div class="bar"><i></i><i></i><i></i></div><div class="pg"><h6>Hi, I'm Rara.</h6>
+          <p style="margin-top:6px;color:var(--muted);font-size:14px">Kelas 9 · I build games &amp; websites.</p>
+          <div class="tiles"><i style="--c:var(--pink)"></i><i style="--c:var(--blue)"></i><i style="--c:var(--yellow)"></i></div></div></div></div>
+        <div class="gmeta"><small>Developer · Kelas 7–9</small><b>Portfolio Website</b><span>HTML · CSS</span></div></div>
+      <div class="gcard"><div class="thumb t th-data"><div class="bars">
+          <i style="--c:var(--navy);--i:0;height:50%"></i><i style="--c:var(--pink);--i:1;height:80%"></i><i style="--c:var(--blue);--i:2;height:65%"></i><i style="--c:var(--navy);--i:3;height:100%"></i></div></div>
+        <div class="gmeta"><small>Creator · Kelas 10–12</small><b>School Data Report</b><span>Python · data</span></div></div>
+      <div class="gcard"><div class="thumb w th-app">
+          <div class="row done"><i></i>Belajar loop</div><div class="row done"><i></i>Push ke Git</div><div class="row"><i></i>Deploy web app</div><div class="row"><i></i>Showcase final project</div></div>
+        <div class="gmeta"><small>Creator · Kelas 10–12</small><b>Interactive Web App</b><span>JavaScript · Git</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="split rv">
+      <h2 class="h-lg">Show. Make. Share.</h2>
+      <p class="lead">Setiap pertemuan 60 menit mengikuti tiga langkah yang sama. Teori diberikan ketika dibutuhkan, sehingga anak langsung melihat bagaimana konsep itu dipakai.</p>
+    </div>
+    <div class="how">
+      <article class="howc rv">
+        <div class="screen"><div class="proj"><div class="quote">“Today, we are going to build this.”</div>
+          <img src="assets/AI_LOGOMARK.png" alt="" style="position:absolute;left:44%;top:52%;width:54px;animation:bob 1.2s ease-in-out infinite">
+          <div style="position:absolute;left:0;right:0;bottom:0;height:24px;background:var(--navy)"></div></div></div>
+        <span class="num">01 · 0–10 MENIT</span><h3 class="h-md">Show</h3>
+        <p>Anak melihat terlebih dahulu apa yang akan mereka buat, lalu menebak cara kerjanya.</p>
+      </article>
+      <article class="howc rv">
+        <div class="screen" style="place-items:stretch"><div class="code" style="min-height:0;padding:16px;font-size:13px;line-height:22px;border-radius:14px"><span class="k">if</span> keyboard.space:
+    speed = <span class="n">-18</span>  <span class="c"># lompat!</span>
+score += <span class="n">1</span><span class="cur"></span></div></div>
+        <span class="num">02 · 10–50 MENIT</span><h3 class="h-md">Make</h3>
+        <p>Belajar sambil membuat. Anak membuat project step-by-step bersama pengajar yang live-coding.</p>
+      </article>
+      <article class="howc rv">
+        <div class="screen"><div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+          <span class="chip b" style="--rot:0deg"><b style="width:22px;height:22px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:13px">✓</b>Saved to portfolio</span>
+          <span class="chip y" style="transform:rotate(-3deg)">Project #7 · Arcade Game</span></div></div>
+        <span class="num">03 · 50–60 MENIT</span><h3 class="h-md">Share</h3>
+        <p>Anak menunjukkan hasilnya, menjelaskan apa yang mereka buat, dan menyimpannya ke portfolio.</p>
+      </article>
+    </div>
+
+    <div class="feats">
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_COMPUTER.png" alt=""></div><h4>Live, bukan rekaman</h4><p>Anak belajar langsung bersama pengajar dan bisa bertanya kapan saja.</p></div>
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_TEAMWORK.png" alt=""></div><h4>1 pengajar, maks. 10 anak</h4><p>Pengajar tetap bisa membimbing dan memeriksa project setiap anak.</p></div>
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_LEARNING.png" alt=""></div><h4>60 menit, 1x seminggu</h4><p>16 pertemuan per semester: 10 mini project, final project, dan showcase.</p></div>
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_DATA.png" alt=""></div><h4>Laporan perkembangan</h4><p>Orang tua menerima laporan dan portfolio project anak setiap semester.</p></div>
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_AWARDS.png" alt=""></div><h4>Showcase semester</h4><p>Anak mempresentasikan final project, dan orang tua bisa ikut menonton.</p></div>
+      <div class="feat rv"><div class="fi"><img src="assets/icons/ICONS_EDUCATION.png" alt=""></div><h4>Online atau di HQ</h4><p>Kelas live online atau tatap muka di HQ Coding Xplor. Kurikulum dan project sama.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <span class="eyebrow rv" style="color:var(--yellow-ex)">Biaya kelas</span>
+    <h2 class="h-lg rv" style="margin-top:14px">Online atau di HQ Coding Xplor.</h2>
+    <p class="lead rv" style="margin-top:18px">60 menit · 1x seminggu · 1 pengajar untuk maksimal 10 anak.</p>
+    <div class="pricebar rv">
+      <div class="pb-top">
+        <div>
+          <span class="from">Semua kelas mulai dari</span>
+          <div class="big">Rp 125.000<small>/ pertemuan</small></div>
+        </div>
+        <div class="pb-cta">
+          <a class="btn primary" href="#daftar">Coba Free Trial Class</a>
+          <a class="btn onnavy" href="https://wa.me/6282298984848">Tanya jadwal via WhatsApp</a>
+        </div>
+      </div>
+      <div class="stages">
+        <span class="st"><i style="background:var(--pink)"></i>Foundation<em>Kelas 1–3</em></span>
+        <span class="st"><i style="background:var(--blue)"></i>Builder<em>Kelas 4–6</em></span>
+        <span class="st"><i style="background:#fff"></i>Developer<em>Kelas 7–9</em></span>
+        <span class="st"><i style="background:var(--yellow)"></i>Creator<em>Kelas 10–12</em></span>
       </div>
     </div>
-    <div class="stages">
-      <a class="stage s1" href="#program"><small>KELAS 1–3</small><b>Foundation</b><span>ScratchJr · cerita digital</span></a>
-      <a class="stage s2" href="#program"><small>KELAS 4–6</small><b>Builder</b><span>PictoBlox · animasi &amp; game</span></a>
-      <a class="stage s3" href="#program"><small>KELAS 7–9</small><b>Developer</b><span>Python · HTML/CSS</span></a>
-      <a class="stage s4" href="#program"><small>KELAS 10–12</small><b>Creator</b><span>Data · web apps · capstone</span></a>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>22</b><strong>Project Per Tahun</strong><span>20 Mini Project + 2 Final Project</span></div>
-      <div class="stat"><b>60</b><strong>Menit Per Kelas</strong><span>1x Seminggu, 32 Pertemuan Per Tahun</span></div>
-      <div class="stat"><b>1:10</b><strong>Pengajar Dan Murid</strong><span>Maksimal 10 Anak Per Pengajar</span></div>
-      <div class="stat"><b>4</b><strong>Tahap Belajar</strong><span>Bertahap Dari Kelas 1 Sampai 12</span></div>
-    </div>
+    <p class="fine">Harga dapat berubah sewaktu-waktu.</p>
   </div>
 </section>
 
-<section id="program" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Apa yang akan anak pelajari</span>
-      <h2>Four stages, one pathway</h2>
-      <p>Anak naik dari coding berbasis blok ke kode nyata secara bertahap, sesuai usia dan kesiapannya.</p>
-    </div>
-    <div class="swipe">
-      <article class="prog p1"><div class="prog-top"><small>KELAS 1–3</small><h3>Foundation</h3><div>Computer &amp; Coding Foundations</div></div>
-        <div class="prog-body"><p>Mengenal komputer dan membuat animasi serta cerita digital pertama dengan ScratchJr.</p><div class="tags"><span>Digital Picture Book</span><span>Animated Story</span></div></div></article>
-      <article class="prog p2"><div class="prog-top"><small>KELAS 4–6</small><h3>Builder</h3><div>Creative Coding</div></div>
-        <div class="prog-body"><p>Membuat animasi, game, dan aplikasi interaktif dengan PictoBlox: logika, variabel, dan problem solving.</p><div class="tags"><span>Arcade Game</span><span>Quiz Game</span><span>Interactive App</span></div></div></article>
-      <article class="prog p3"><div class="prog-top"><small>KELAS 7–9</small><h3>Developer</h3><div>Real Programming</div></div>
-        <div class="prog-body"><p>Computational thinking, lalu pindah ke kode nyata: Python mulai Kelas 8, HTML dan CSS untuk website.</p><div class="tags"><span>Python Chatbot</span><span>Portfolio Website</span><span>Personal Manager App</span></div></div></article>
-      <article class="prog p4"><div class="prog-top"><small>KELAS 10–12</small><h3>Creator</h3><div>Advanced Coding &amp; Real-World Projects</div></div>
-        <div class="prog-body"><p>Python untuk data, JavaScript dan aplikasi web, Git, automation, dan capstone project untuk masalah nyata.</p><div class="tags"><span>School Data Report</span><span>Interactive Web App</span><span>Capstone Project</span></div></div></article>
-    </div>
-    <p class="hint">Geser untuk melihat semua tahap →</p>
-  </div>
-</section>
 
-<section id="cara-belajar" class="sec bg-mist">
+<!-- SCHOOLS -->
+<section class="sec" id="sekolah">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Bagaimana setiap kelas berlangsung</span>
-      <h2>Every class = build something</h2>
-      <p>Setiap pertemuan 60 menit mengikuti tiga langkah yang sama, jadi anak langsung praktik dan teori dipelajari tepat saat dibutuhkan.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><small>0–10 MENIT</small><h3>Show</h3><p><b>See what you're going to build.</b> Pengajar menunjukkan project jadi dan memperkenalkan konsepnya.</p></div>
-      <div class="step"><div class="n">2</div><small>10–50 MENIT</small><h3>Make</h3><p><b>Build while learning the concept.</b> Anak membuat project langkah demi langkah. Yang selesai lebih cepat mendapat Bonus Mission.</p></div>
-      <div class="step"><div class="n">3</div><small>50–60 MENIT</small><h3>Share</h3><p><b>Show your work and reflect.</b> Anak menunjukkan hasilnya, menjelaskan apa yang dibuat, dan menyimpannya ke portfolio.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec dark">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">The student journey</span>
-      <h2>One student. One long-term journey.</h2>
-      <p>Anak tidak perlu memulai dari awal setiap kali naik kelas. Kemampuannya berkembang tahun demi tahun.</p>
-    </div>
-    <ol class="timeline">
-      <li><small>KELAS 1</small><div>Mengenal komputer</div></li>
-      <li><small>KELAS 3</small><div>Membuat digital story</div></li>
-      <li><small>KELAS 5</small><div>Membuat game</div></li>
-      <li><small>KELAS 7</small><div>Algoritma &amp; computational thinking</div></li>
-      <li><small>KELAS 8</small><div>Mulai Python</div></li>
-      <li><small>KELAS 9</small><div>Membuat website</div></li>
-      <li><small>KELAS 10</small><div>Mengolah data</div></li>
-      <li><small>KELAS 11</small><div>Membuat web application</div></li>
-      <li><small>KELAS 12</small><div>Capstone project</div></li>
-    </ol>
-    <p class="goal">Tujuannya: anak tidak hanya menjadi <em>pengguna teknologi</em>, tetapi belajar menjadi <em>creator</em>.</p>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Apa yang anak dapatkan</span>
-      <h2>Bukan hanya belajar coding</h2>
-      <p>Melalui project yang mereka buat, anak berlatih berpikir logis, memecahkan masalah, mencoba, salah, memperbaiki, dan mengubah ide menjadi sesuatu yang nyata.</p>
-    </div>
-    <div class="grid2">
-      <div class="card"><h3>Logical thinking</h3><p>Menyusun langkah dan memahami cara program bekerja.</p></div>
-      <div class="card"><h3>Problem solving</h3><p>Memecah masalah menjadi bagian yang bisa diselesaikan.</p></div>
-      <div class="card"><h3>Creativity</h3><p>Mengubah ide menjadi game, website, dan aplikasi.</p></div>
-      <div class="card"><h3>Technical skills</h3><p>Dari block coding ke Python, web, data, dan automation.</p></div>
-      <div class="card"><h3>Project experience</h3><p>Membuat, menguji, memperbaiki, dan mempresentasikan.</p></div>
-      <div class="card"><h3>Portfolio</h3><p>Kumpulan karya yang menunjukkan perkembangan anak.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec bg-mist">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">AI learning</span>
-      <h2>Coding first. AI as an additional layer.</h2>
-      <p>AI dikenalkan bertahap dan sesuai usia, bukan sebagai pengganti coding. Coding tetap menjadi dasar; AI dipelajari dan digunakan secara bertanggung jawab.</p>
-    </div>
-    <div class="ai">
-      <div class="card"><small>KELAS 5–6</small><h3>AI Awareness</h3><p>Mengenal bagaimana AI dipakai dalam teknologi sehari-hari lewat eksplorasi dan creative projects.</p></div>
-      <div class="card"><small>KELAS 7–9</small><h3>AI Literacy</h3><p>Memahami data dan cara AI belajar, mengevaluasi jawaban AI, serta privasi dan misinformasi.</p></div>
-      <div class="card"><small>KELAS 10–12</small><h3>AI + Coding</h3><p>Dasar machine learning dan membuat aplikasi web yang memanfaatkan AI.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="biaya" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Biaya kelas</span>
-      <h2>Online atau di HQ Coding Xplor</h2>
-      <p>60 menit · 1x seminggu · 1 pengajar untuk maksimal 10 anak.</p>
-    </div>
-    <div class="price-all">
-      <div>
-        <div class="from">Semua kelas mulai dari</div>
-        <div class="amt">Rp 125.000<span> / sesi</span></div>
+    <div class="school rv">
+      <div class="sdots"></div>
+      <div style="position:relative">
+        <span class="eyebrow" style="color:var(--yellow-ex)">Untuk sekolah</span>
+        <h2 class="h-lg wide" style="margin-top:14px">Bawa Coding Xplor ke sekolah Anda.</h2>
       </div>
-      <div class="chips"><span class="k1">Foundation · Kelas 1–3</span><span class="k2">Builder · Kelas 4–6</span><span class="k3">Developer · Kelas 7–9</span><span class="k4">Creator · Kelas 10–12</span></div>
+      <div class="school-grid" style="margin-top:28px">
+        <div>
+          <p class="lead" style="color:#4A4766">Kurikulum coding Kelas 1–12 lengkap dengan materi, pengajar terlatih, rubrik penilaian, portfolio siswa, dan showcase setiap semester. Selaras dengan CP Informatika dan Koding &amp; Kecerdasan Artifisial (KKA), dan berjalan dengan computer lab yang sudah ada.</p>
+          <div class="cta-row" style="justify-content:flex-start;margin-top:30px">
+            <a class="btn dark" href="https://wa.me/6282298984848">Jadwalkan free demo class</a>
+          </div>
+        </div>
+        <div class="school-vis" aria-hidden="true">
+          <div class="lab">
+            <div class="lab-top"><span>Computer Lab · Kelas 8B</span><b>32 siswa</b></div>
+            <div class="desks">
+              <i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i>
+              <i class="on"></i><i></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i>
+            </div>
+          </div>
+          <span class="chip p sc1" style="--rot:-6deg">CP Informatika</span>
+          <span class="chip b sc2" style="--rot:5deg">KKA</span>
+          <span class="chip o sc3" style="--rot:-3deg">Rubrik penilaian</span>
+        </div>
+      </div>
+      <div class="modes">
+        <div class="mode"><span class="mi" style="background:var(--pink)"><img src="assets/icons/ICONS_EDUCATION.png" alt=""></span><h4>Intrakurikuler</h4><p>Mata pelajaran KKA atau Informatika.</p></div>
+        <div class="mode"><span class="mi" style="background:var(--blue)"><img src="assets/icons/ICONS_LEARNING.png" alt=""></span><h4>Ekstrakurikuler</h4><p>Program coding mingguan.</p></div>
+        <div class="mode"><span class="mi" style="background:var(--yellow)"><img src="assets/icons/ICONS_CODING.png" alt=""></span><h4>Coding Club</h4><p>Untuk siswa yang ingin mendalami coding.</p></div>
+        <div class="mode"><span class="mi" style="background:var(--navy)"><img src="assets/icons/ICONS_AWARDS.png" alt=""></span><h4>Pilot Program</h4><p>Mulai dari satu kelas selama satu semester.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="sekolah" class="sec cream">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Untuk sekolah</span>
-      <h2>Bawa Coding Xplor ke sekolah Anda</h2>
-      <p>Kurikulum coding Kelas 1–12 lengkap dengan materi, pengajar terlatih, rubrik penilaian, portfolio siswa, dan showcase setiap semester. Selaras dengan CP Informatika dan Koding &amp; Kecerdasan Artifisial (KKA), dan berjalan dengan computer lab yang sudah ada.</p>
-    </div>
-    <div class="grid2 grid4">
-      <div class="card"><h3>Intrakurikuler</h3><p>Mata pelajaran KKA atau Informatika.</p></div>
-      <div class="card"><h3>Ekstrakurikuler</h3><p>Program coding mingguan.</p></div>
-      <div class="card"><h3>Coding Club</h3><p>Untuk siswa yang ingin mendalami coding.</p></div>
-      <div class="card"><h3>Pilot Program</h3><p>Mulai dari satu kelas selama satu semester.</p></div>
-    </div>
-    <a class="btn btn-navy school-cta" href="https://wa.me/6282298984848">Jadwalkan free demo class</a>
-  </div>
-</section>
-
+<!-- TRUST -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Backed by Robotic Explorer</span>
-      <h2>Why parents trust Coding Xplor</h2>
-      <p>Coding Xplor adalah sub-brand Robotic Explorer, yang mengembangkan pendidikan teknologi untuk anak dan pendidik di Indonesia sejak 2005.</p>
+    <div class="trust rv">
+      <h2 class="h-lg">Why parents trust us.</h2>
+      <p class="lead" style="margin-top:18px">Coding Xplor adalah sub-brand Robotic Explorer, yang sejak 2005 mengembangkan pendidikan teknologi untuk anak dan pendidik di Indonesia.</p>
+      <div class="nums">
+        <div><b>20+</b><span>Tahun pengalaman</span></div><div><b>200+</b><span>Mitra edukasi</span></div>
+        <div><b>50.000+</b><span>Siswa</span></div><div><b>6.000+</b><span>Guru &amp; pendidik</span></div><div><b>16</b><span>Rekor MURI</span></div>
+      </div>
+      <p class="fine">Angka di atas merupakan jangkauan dan pencapaian Robotic Explorer beserta ekosistem pendidikannya, bukan khusus Coding Xplor.</p>
     </div>
-    <div class="nums">
-      <div><b>20+</b><span>tahun pendidikan teknologi</span></div>
-      <div><b>200+</b><span>mitra edukasi</span></div>
-      <div><b>50.000+</b><span>siswa</span></div>
-      <div><b>6.000+</b><span>guru &amp; pendidik</span></div>
-      <div><b>16</b><span>rekor MURI</span></div>
-    </div>
-    <p class="note">Angka di atas merupakan jangkauan dan pencapaian Robotic Explorer beserta ekosistem pendidikannya, bukan khusus Coding Xplor.</p>
   </div>
 </section>
 
-<section id="faq" class="sec bg-mist faq">
+<!-- FAQ -->
+<section class="sec" id="faq">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">FAQ</span>
-      <h2>Pertanyaan yang sering diajukan</h2>
+    <h2 class="h-lg rv" style="text-align:center">Pertanyaan orang tua.</h2>
+    <div class="faq">
+      <details class="rv"><summary>Anak saya belum pernah belajar coding. Apakah bisa ikut?</summary><p>Bisa. Setiap tahap dirancang untuk pemula di jenjang tersebut. Untuk anak yang baru bergabung di kelas yang lebih tinggi, kami melakukan placement check di awal agar anak mulai dari level yang sesuai.</p></details>
+      <details class="rv"><summary>Apakah anak harus pintar matematika atau bahasa Inggris?</summary><p>Tidak. Penjelasan diberikan dalam Bahasa Indonesia, dan istilah coding dalam bahasa Inggris dikenalkan sedikit demi sedikit. Justru coding membantu anak melatih logika dan problem solving.</p></details>
+      <details class="rv"><summary>Kelasnya online atau tatap muka?</summary><p>Bisa keduanya: kelas live online bersama pengajar, atau tatap muka di HQ Coding Xplor. Kurikulum dan project-nya sama.</p></details>
+      <details class="rv"><summary>Perangkat apa yang dibutuhkan?</summary><p>Semua kelas: internet yang stabil, webcam, dan mikrofon atau headset. Foundation (Kelas 1–3) membutuhkan tablet (iPad/Android) atau Chromebook. Kelas 4–12 membutuhkan laptop atau PC (Windows atau Mac).</p></details>
+      <details class="rv"><summary>Bagaimana saya tahu perkembangan anak?</summary><p>Orang tua menerima laporan perkembangan setiap semester, dan semua project anak disimpan dalam portfolio. Di akhir setiap semester ada showcase, tempat anak mempresentasikan final project-nya.</p></details>
     </div>
-    <details><summary>Anak saya belum pernah belajar coding. Apakah bisa ikut?</summary><p>Bisa. Setiap tahap dirancang untuk pemula di jenjang tersebut. Anak yang baru bergabung di kelas lebih tinggi mengikuti placement check agar mulai dari level yang sesuai.</p></details>
-    <details><summary>Apakah anak harus pintar matematika atau bahasa Inggris?</summary><p>Tidak. Penjelasan diberikan dalam Bahasa Indonesia, dan istilah coding dalam bahasa Inggris dikenalkan sedikit demi sedikit.</p></details>
-    <details><summary>Kelasnya online atau tatap muka?</summary><p>Bisa keduanya: kelas live online bersama pengajar, atau tatap muka di HQ Coding Xplor. Kurikulum dan project-nya sama.</p></details>
-    <details><summary>Perangkat apa yang dibutuhkan untuk kelas online?</summary><p>Internet stabil, webcam, dan mikrofon. Kelas 1–3 membutuhkan tablet (iPad/Android) atau Chromebook untuk ScratchJr dengan pendampingan orang tua; Kelas 4–12 membutuhkan laptop atau PC.</p></details>
-    <details><summary>Bagaimana saya tahu perkembangan anak?</summary><p>Orang tua menerima laporan perkembangan setiap semester, semua project tersimpan di portfolio anak, dan di akhir semester ada showcase final project.</p></details>
-    <details><summary>Bisakah anak mencoba dulu?</summary><p>Bisa. Kami menyediakan free trial class selama 60 menit sebelum mendaftar.</p></details>
   </div>
 </section>
 
-<section class="sec dark final">
+<!-- FINAL CTA -->
+<section class="final" id="daftar">
   <div class="wrap">
-    <h2>Yuk, coba <em>free trial class!</em></h2>
-    <p>Hubungi kami lewat WhatsApp untuk jadwal kelas online dan di HQ Coding Xplor.</p>
-    <a class="btn btn-yellow" href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a>
-  </div>
-</section>
-<section id="tools" class="sec tools">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Tools yang dipakai</span>
-      <h2>Belajar dengan tools yang dipakai di dunia nyata</h2>
+    <span class="eyebrow">Free trial class · 60 menit</span>
+    <h2 class="h-xl rv" style="margin-top:18px">Yuk, coba free trial class!</h2>
+    <p class="lead rv">From first code to real-world creation.</p>
+    <div class="howjoin">
+      <div class="rv"><b>01</b><span>Hubungi kami lewat WhatsApp</span></div>
+      <div class="rv"><b>02</b><span>Anak ikut free trial class 60 menit</span></div>
+      <div class="rv"><b>03</b><span>Kami bantu pilih tahap &amp; jadwal</span></div>
+      <div class="rv"><b>04</b><span>Anak mulai membuat project pertamanya</span></div>
     </div>
-    <div class="logos">
-      <div><img src="logos/scratchjr.png" alt="ScratchJr" loading="lazy"></div>
-      <div><img src="logos/pictoblox.png" alt="PictoBlox" loading="lazy"></div>
-      <div><img src="logos/python.png" alt="Python" loading="lazy"></div>
-      <div><img src="logos/javascript.png" alt="JavaScript" loading="lazy"></div>
-      <div><img src="logos/git.png" alt="Git" loading="lazy"></div>
+    <div class="cta-row rv">
+      <a class="btn primary" href="https://wa.me/6282298984848">Chat WhatsApp · 0822-9898-4848</a>
+      <a class="btn ghost" href="#program">Lihat program</a>
     </div>
   </div>
 </section>
-</main>
 
+<!-- TOOLS -->
+<section class="tools-sec" id="tools">
+  <div class="wrap">
+    <span class="eyebrow rv" style="color:var(--yellow-ex)">Tools yang dipakai</span>
+    <h2 class="h-lg wide rv" style="margin-top:14px">Belajar dengan tools yang dipakai di dunia nyata.</h2>
+    <div class="logos rv">
+      <div class="logo-card"><img src="assets/logos/scratchjr.png" alt="ScratchJr"></div>
+      <div class="logo-card"><img src="assets/logos/pictoblox.png" alt="PictoBlox"></div>
+      <div class="logo-card"><img src="assets/logos/python.png" alt="Python"></div>
+      <div class="logo-card"><img src="assets/logos/javascript.png" alt="JavaScript"></div>
+      <div class="logo-card"><img src="assets/logos/git.png" alt="Git"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="foot">
-      <div class="foot-brand">
-        <img src="logo.png" alt="Coding Xplor">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a href="#" class="lockup" data-lockup aria-label="Coding Xplor"><img src="assets/AI_PRIMARY.png" alt="Xplor"><span class="coding"><span>C</span><span>O</span><span>D</span><span>I</span><span>N</span><span>G</span></span></a>
         <p>Program coding Kelas 1–12 untuk membantu anak belajar berpikir, membuat, dan berkarya dengan teknologi. A sub-brand of Robotic Explorer.</p>
       </div>
-      <div>
-        <h4>Head Quarter</h4>
-        <ul class="foot-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Greenville+Blok+AL+no+1A-B%2C+RT.5%2FRW.14%2C+Duri+Kepa%2C+Kec.+Kb.+Jeruk%2C+Kota+Jakarta+Barat%2C+Daerah+Khusus+Ibukota+Jakarta+11510" target="_blank" rel="noopener">Greenville Blok AL no 1A-B, RT.5/RW.14, Duri Kepa, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11510</a></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:xploracademyofficial@gmail.com">xploracademyofficial@gmail.com</a></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><a href="https://xploracademy.id">xploracademy.id</a></li>
+      <div class="fhq">
+        <b>Head Quarter</b>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Greenville+Blok+AL+no+1A-B%2C+RT.5%2FRW.14%2C+Duri+Kepa%2C+Kec.+Kb.+Jeruk%2C+Kota+Jakarta+Barat%2C+Daerah+Khusus+Ibukota+Jakarta+11510" target="_blank" rel="noopener">Greenville Blok AL no 1A-B, RT.5/RW.14, Duri Kepa, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11510</a></li>
+          <li><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg><a href="https://wa.me/6282298984848">WhatsApp 0822-9898-4848</a></li>
+          <li><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:xploracademyofficial@gmail.com">xploracademyofficial@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg><a href="https://xploracademy.id">xploracademy.id</a></li>
         </ul>
       </div>
-      <div class="foot-social">
-        <h4>Ikuti Kami</h4>
-        <div class="social"><a href="https://www.instagram.com/codingxplor/" aria-label="Instagram Coding Xplor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div>
+      <div class="fsocial">
+        <b>Ikuti Kami</b>
+        <a class="ig" href="https://www.instagram.com/codingxplor/" target="_blank" rel="noopener" aria-label="Instagram @codingxplor"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
       </div>
     </div>
-    <p class="copy">© 2026 Coding Xplor. Hak Cipta Dilindungi.</p>
+    <div class="fbottom">© 2026 Coding Xplor. Hak Cipta Dilindungi.</div>
   </div>
 </footer>
 
-<div class="dock">
-  <a class="btn btn-yellow" href="https://wa.me/6282298984848">
-    <svg class="wa-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>
-    Coba Free Trial
-  </a>
-  <a class="btn btn-ghost" href="#biaya">Biaya</a>
-</div>
-
 <script>
-(function(){
-  var b=document.querySelector('.menu-btn'), d=document.getElementById('drawer');
-  function set(open){d.classList.toggle('open',open);b.setAttribute('aria-expanded',open);b.setAttribute('aria-label',open?'Tutup menu':'Buka menu');}
-  b.addEventListener('click',function(){set(!d.classList.contains('open'));});
-  d.addEventListener('click',function(e){if(e.target.tagName==='A')set(false);});
-})();
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+/* logo lockup: rebuild the CODING line under AI_PRIMARY (4167×1659 px units) */
+$$('[data-lockup]').forEach(l=>{
+  const fit=()=>{ const W=l.getBoundingClientRect().width, k=W/4167, fs=258*k, c=$('.coding',l);
+    Object.assign(c.style,{left:1993*k+'px',top:(1392*k-.124*fs)+'px',width:1959*k+'px',fontSize:fs+'px'}); };
+  fit(); addEventListener('resize',fit);
+});
+
+/* class window: typing code + mini game + Show/Make/Share cycle */
+const LINES=[
+  '<span class="f">player</span> = <span class="f">Actor</span>(<span class="s">"xplor"</span>)',
+  'gravity = <span class="n">1</span>',
+  'speed = <span class="n">0</span>',
+  '',
+  '<span class="k">def</span> <span class="f">update</span>():',
+  '    <span class="k">global</span> speed',
+  '    speed += gravity',
+  '    player.y += speed',
+  '    <span class="k">if</span> player.y > GROUND:',
+  '        player.y = GROUND',
+  '    <span class="k">if</span> keyboard.space:',
+  '        speed = <span class="n">-18</span>  <span class="c"># lompat!</span>',
+];
+const code=$('#code'), steps=$$('.step'), toast=$('#toast');
+let shown=0;
+function drawCode(){ code.innerHTML=LINES.slice(0,shown).map((l,i)=>`<span class="ln">${i+1}</span>${l}`).join('\n')+(shown<LINES.length?'\n<span class="ln">'+(shown+1)+'</span><span class="cur"></span>':'<span class="cur"></span>'); }
+function cycle(){
+  shown=0; drawCode(); toast.classList.remove('on');
+  steps.forEach(s=>s.classList.remove('on')); steps[0].classList.add('on');
+  setTimeout(()=>{ steps[1].classList.add('on');
+    const t=setInterval(()=>{ shown++; drawCode(); if(shown>=LINES.length) clearInterval(t); },260); },1400);
+  setTimeout(()=>{ steps[2].classList.add('on'); toast.classList.add('on'); },1400+LINES.length*260+800);
+}
+cycle(); setInterval(cycle,9000);
+
+const game=$('#game'), pl=$('#player'), sc=$('#score');
+let t0=performance.now();
+function frame(now){
+  const t=(now-t0)/1000, W=game.clientWidth, H=game.clientHeight, P=.8, p=(t%P)/P;
+  const x=20+((t*120)%(W-90)), y=(H-44-62)-Math.min(H*.42,150)*4*p*(1-p);
+  const sq=p<.07||p>.93?1.1:1;
+  pl.style.transform=`translate(${x}px,${y}px) scale(${sq},${2-sq})`;
+  sc.textContent=Math.floor(t/P)%100;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* gallery marquee: duplicate the track so it loops seamlessly */
+const gt=$('#gtrack'); gt.innerHTML+=gt.innerHTML;
+$$('video',gt).forEach(v=>{v.muted=true;v.play().catch(()=>{});});
+
+/* pricing toggle */
+$$('.toggle button').forEach(b=>b.addEventListener('click',()=>{
+  $$('.toggle button').forEach(x=>x.classList.toggle('on',x===b));
+  const p=b.dataset.period;
+  $$('.plan .price').forEach(el=>el.innerHTML=`${el.dataset[p]}<small>/ ${p==='m'?'bulan':'semester'}</small>`);
+  $$('.plan .sub').forEach(el=>el.textContent=el.dataset[p]);
+}));
+
+/* phone menu drawer */
+const burger=$('.burger'), drawer=$('#drawer');
+const setMenu=open=>{ burger.setAttribute('aria-expanded',open); drawer.hidden=!open; };
+burger.addEventListener('click',()=>setMenu(drawer.hidden));
+$$('a',drawer).forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+/* scroll reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{threshold:.12});
+$$('.rv').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
